@@ -1,0 +1,42 @@
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+<mat-toolbar>
+        <span>
+            <img src="./assets/img/logo/agariDibujo.png" class="logo">
+        </span>
+            <span class="espaciado"></span>
+        <span>
+            <button mat-button><i class='bx bxs-home bx-flip-horizontal' style='color:#ffffff' ></i> Inicio</button>
+        </span>
+            <span class="espaciado"></span>
+        <span>
+            <button mat-button [matMenuTriggerFor]="productos"><i class='bx bxs-category' style='color:#ffffff' ></i> Productos</button>
+                <mat-menu #productos="matMenu" xPosition="after">
+                    <button mat-menu-item class="submenu">Marca 1</button>
+                    <button mat-menu-item class="submenu">Marca 2</button>
+                </mat-menu>
+        </span>
+            <span class="espaciado"></span>
+        <span>
+            <button mat-button [matMenuTriggerFor]="pedidos"><i class='bx bxs-spreadsheet' style='color:#ffffff' ></i> Pedidos</button>
+                <mat-menu #pedidos="matMenu" xPosition="after">
+                    <button mat-menu-item class="submenu">En progreso</button>
+                    <button mat-menu-item class="submenu">Finalizados</button>
+                </mat-menu>
+        </span>
+            <span class="espaciado"></span>
+        <span>
+            <button mat-button [matMenuTriggerFor]="nosotros"><i class='bx bxs-group' style='color:#ffffff' ></i> Nosotros</button>
+            <mat-menu #nosotros="matMenu" xPosition="after">
+                <button mat-menu-item class="submenu">Contactanos</button>
+                <button mat-menu-item class="submenu">Filosofía</button>
+            </mat-menu>
+        </span>
+            <span class="espaciado"></span>
+        <span>
+            <button mat-button><i class='bx bxs-building-house' style='color:#ffffff' ></i> Administración</button>
+        </span>
+            <span class="espaciado"></span>
+        <span>
+            <button mat-button><i class='bx bxs-log-in' style='color:#ffffff' ></i> Iniciar sesión</button>
+        </span>
+</mat-toolbar>

@@ -1,0 +1,21 @@
+.mat-toolbar{
+    background-color: black;
+}
+
+*{
+    font-size: x-large;
+    color: white;
+}
+
+.espaciado{
+    width: 50px;
+}
+
+.submenu{
+    font-size: medium;
+}
+
+.logo{
+    max-width: 50px;
+    max-height: 50px;
+}
