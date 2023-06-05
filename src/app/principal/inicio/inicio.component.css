@@ -1,0 +1,11 @@
+.carrusel{
+    max-height: 10px;
+}
+
+::ng-deep .carousel-control-prev-icon{
+    background-image: url('https://www.nicepng.com/png/full/758-7586854_arrow-png-transparent-icon-right-arrow-in-circle.png');
+    transform: rotate(180deg);
+  }
+  ::ng-deep .carousel-control-next-icon{
+    background-image: url('https://www.nicepng.com/png/full/758-7586854_arrow-png-transparent-icon-right-arrow-in-circle.png');
+  }
