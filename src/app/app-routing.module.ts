@@ -19,7 +19,7 @@ const routes: Routes = [
   {path: 'inicio', component:InicioComponent},
   
   //Rutas Administración
-  {path: 'administracion', component:BackstageComponent},
+  {path: 'administracion/inicio', component:BackstageComponent},
   {path: 'administracion/cliente', component:ClienteComponent},
   {path: 'administracion/detalle', component:DetalleComponent},
   {path: 'administracion/empleado', component:EmpleadoComponent},
