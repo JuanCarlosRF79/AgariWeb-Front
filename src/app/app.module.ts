@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 //Material
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -41,6 +42,7 @@ import { MenuBsComponent } from './administracion/menu-bs/menu-bs.component';
     MenuBsComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

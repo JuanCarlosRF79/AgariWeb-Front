@@ -1,6 +1,151 @@
-<body>
-    <p>cliente works!</p>
-    <app-menu-bs></app-menu-bs>    
+<header>
+    <app-menu-bs></app-menu-bs>
+</header>
+    <body>
+    <div class="contenido">
+        <br>
+        <div id="encabezado" align="center">
+            <p> Clientes </p>   
+        </div>
+        <br>
+            <form id="form" class="topBefore" method="post">
+                <div id="datos-cliente" class="container w-50" align="center">
+                    
+                    <div class="row justify-content-md-center mb-2">
+                        <div class="input-group mb-auto">
+                            <div class="input-group-prepend w-25">
+                                <span class="input-group-text bg-dark">Nombre: </span>
+                            </div>
+                            <input class="form-control" maxlenght="100" type="text" placeholder="Nombre del cliente"  [(ngModel)]="cliente.nombreCli" [ngModelOptions]="{standalone: true}">
+                        </div>
+                    </div>
+                    
+                    <div class="row justify-content-md-center mb-2">
+                        <div class="input-group mb-auto">
+                            <div class="input-group-prepend w-25">
+                                <span class="input-group-text bg-dark">Apellidos: </span>
+                            </div>
+                            <input id="apellido" maxlenght="100" class="form-control" type="text" placeholder="Apellido paterno del cliente" [(ngModel)]="cliente.apellidoPatCli" [ngModelOptions]="{standalone: true}">
+                            <input id="apellidoMat_cli" class="form-control" maxlenght="100" type="text" placeholder="Apellido materno del cliente" [(ngModel)]="cliente.apellidoMatCli" [ngModelOptions]="{standalone: true}">
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-md-center mb-2">
+                        <div class="input-group mb-auto">
+                            <div class="input-group-prepend w-25">
+                              <span class="input-group-text bg-dark">Sexo: </span>
+                            </div>
+                            <select name="sexo" id="sexo" class="form-select" [(ngModel)]="cliente.sexo" [ngModelOptions]="{standalone: true}">
+                                <option id="select-opt" value="">Seleccione uno</option>
+                                <option id="select-opt"  value="Masculino">Masculino</option>
+                                <option id="select-opt"  value="Femenino">Femenino</option>
+                            </select>
+                        </div>
+                    </div>
+                            
+                    <div class="row justify-content-md-center mb-2">
+                        <div class="input-group mb-auto">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-dark">Fecha de nacimiento: </span>
+                            </div>
+                            <input class="form-control" id="fechaNac" type="date" [(ngModel)]="cliente.fechaNac" [ngModelOptions]="{standalone: true}" >
+                        </div>
+                    </div>
+                
+                    <div class="row justify-content-md-center mb-2">
+                        <div class="input-group mb-auto">
+                            <div class="input-group-prepend w-25">
+                                <span class="input-group-text bg-dark">Dirección calle:</span>
+                            </div>
+                            <input class="form-control" id="direccionCalle" maxlenght="255" type="text" placeholder="Dirección calle del cliente" [(ngModel)]="cliente.direccionCalle" [ngModelOptions]="{standalone: true}" >
+                        </div>
+                    </div>
+               
+                    <div class="row justify-content-md-center mb-2">
+                        <div class="input-group mb-auto">
+                            <div class="input-group-prepend w-25">
+                                <span class="input-group-text bg-dark">Dirección colonia:</span>
+                            </div>
+                        <input class="form-control" id="direccionColonia" maxlenght="255" type="text" placeholder="Dirección colonia del cliente" [(ngModel)]="cliente.direccionColonia" [ngModelOptions]="{standalone: true}" >
+                        </div>
+                    </div>
+            
+                    <div class="row justify-content-md-center mb-2">
+                        <div class="input-group mb-auto">
+                            <div class="input-group-prepend w-25">
+                                <span class="input-group-text bg-dark">Telefono:</span>
+                            </div>
+                        <input class="form-control" id="telefono" maxlenght="10" type="text" placeholder="Telefóno del cliente" [(ngModel)]="cliente.telefono" [ngModelOptions]="{standalone: true}" >
+                        </div>
+                    </div>
+            
+                    <div class="row justify-content-md-center mb-2">
+                        <div class="input-group mb-auto">
+                            <div class="input-group-prepend w-25">
+                                <span class="input-group-text bg-dark">RFC:</span>
+                            </div>
+                            <input class="form-control" id="rfc" maxlenght="13" type="text" placeholder="RFC del cliente" [(ngModel)]="cliente.rfc" [ngModelOptions]="{standalone: true}" >
+                        </div>
+                    </div>
+                
+                    <div class="row justify-content-md-center mb-2">
+                        <div class="input-group mb-auto">
+                            <div class="input-group-prepend w-25">
+                                <span class="input-group-text bg-dark">E-mail:</span>
+                            </div>
+                            <input class="form-control" id="email" type="email" placeholder="Correo electrónico del cliente" [(ngModel)]="cliente.correo" [ngModelOptions]="{standalone: true}" >
+                        </div>
+                    </div>
+                
+                    <div class="row justify-content-md-center mb-2">
+                        <div class="input-group mb-auto">
+                            <div class="input-group-prepend w-25">
+                                <span class="input-group-text bg-dark">Contraseña:</span>
+                            </div>  
+                        <input class="form-control" type="password" placeholder="Contraseña de la cuenta del cliente" [(ngModel)]="cliente.password" [ngModelOptions]="{standalone: true}" >
+                        </div>
+                    </div>
+                  
+                    <div class="row justify-content-md-center mb-5">
+                        <div class="input-group mb-auto">
+                            <div class="input-group-prepend w-25">
+                                <span class="input-group-text bg-dark">Estado:</span>
+                            </div>   
+                            <select class="form-select" name="estado" id="estado" [(ngModel)]="cliente.estado" [ngModelOptions]="{standalone: true}" >
+                                <option id="select-opt" value="" selected >Seleccione uno</option>
+                                <option id="select-opt"  value="Activo">Activo</option>
+                                <option id="select-opt"  value="De baja">Baja</option>
+                            </select>
+                        </div>
+                    </div>
+                        
+                
+                <div id="botones-cliente" class="row justify-content-md-center">
+                    <div class="col md-auto">
+                        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                            <div class="btn-group me-2" role="group" aria-label="First group">
+                                <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" value="Guardar">
+                                <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" value="Modificar">
+                                <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" value="Buscar">
+                                <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" value="Eliminar">
+                                <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" value="Mostrar todo">
+                                <input id="submit" type="submit" name="btn-operacion" class="btn btn-primary" value="Limpiar" >
+                            </div>
+                        </div>
+                    </div>
+                    <!--
+                    <input id="submit" type="button" name="btn-operacion" (click)="insertarCli()" value="Guardar">
+                    <input id="submit" type="button" name="btn-operacion" (click)="modificarCli()" value="Modificar">
+                    <input id="submit" type="button" name="btn-operacion" (click)="consultarCli()" value="Buscar">
+                    <input id="submit" type="button" name="btn-operacion" (click)="eliminarCli()" value="Eliminar">
+                    <input id="submit" type="button" name="btn-operacion" (click)="todoCli()" value="Mostrar todo">
+                    <input id="submit" type="submit" name="btn-operacion" (click)="limpiar()" value="Limpiar" >
+                    -->
+                </div>
+                </div>
+                <br><br>
+                </form>
+    </div>
 </body>
 <footer>
     <app-footer></app-footer>

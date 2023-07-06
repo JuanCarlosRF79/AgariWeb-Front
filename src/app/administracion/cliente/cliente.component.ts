@@ -6,5 +6,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./cliente.component.css']
 })
 export class ClienteComponent {
-
+  cliente={
+    nombreCli: "",
+    apellidoPatCli: "",
+    apellidoMatCli: "",
+    sexo: "",
+    fechaNac: "",
+    rfc: "",
+    direccionCalle: "",
+    direccionColonia: "",
+    telefono: "",
+    correo: "",
+    estado: "Activo",
+    password: "",
+    tipo: "Cliente"
+  }
 }
