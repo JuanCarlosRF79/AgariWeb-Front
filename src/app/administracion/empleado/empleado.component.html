@@ -1,6 +1,145 @@
-<body>
-    <p>empleado works!</p>
-    <app-menu-bs></app-menu-bs>    
+<header>
+    <app-menu-bs></app-menu-bs>
+</header>
+<body>    
+
+<!-- Formulario -->
+    <form id="form" class="topBefore" action="Empleado.php" method="post">
+        
+            <table>
+                    <tr>
+                        <td id="descripcion">Nombre: </td> 
+                        <td><input id="nombre_emp" maxlenght="100" type="text" placeholder="Nombre del empleado" [(ngModel)]="empleado.nombreEmp" [ngModelOptions]="{standalone: true}"></td>
+                    </tr>
+                
+            
+                    <tr>
+                        <td id="descripcion">Apellido paterno: </td> 
+                        <td><input id="apellidoPat_emp" maxlenght="100" type="text" placeholder="Apellido del empleado" [(ngModel)]="empleado.apellidoPatEmp" [ngModelOptions]="{standalone: true}"></td>
+                    </tr>
+            
+                    <tr>
+                        <td id="descripcion">Apellido materno: </td> 
+                        <td><input id="apellidoMat_emp" maxlenght="100" type="text" placeholder="Apellido del empleado" [(ngModel)]="empleado.apellidoMatEmp" [ngModelOptions]="{standalone: true}"></td>
+                    </tr>
+            
+            
+                    <tr>
+                        <td id="descripcion">Puesto: </td>
+                        <td>
+                        <select name="puesto" id="puesto" [(ngModel)]="empleado.puesto" [ngModelOptions]="{standalone: true}">
+                                <option id="select-opt" value=""selected>Seleccione uno</option>
+                                <option id="select-opt"  value="Secretario">Secretario</option>
+                                <option id="select-opt"  value="Técnico">Técnico</option>
+                                <option id="select-opt"  value="Almacenista">Almacenista</option>
+                                <option id="select-opt"  value="Gerente">Gerente</option>
+                        </select>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td id="descripcion">Sexo: </td>
+                        <td>
+                            <select name="sexo" id="sexo" [(ngModel)]="empleado.sexo" [ngModelOptions]="{standalone: true}">
+                                    <option id="select-opt" value="">Seleccione uno</option>
+                                    <option id="select-opt"  value="Masculino" >Masculino</option>
+                                    <option id="select-opt"  value="Femenino" >Femenino</option>
+                            </select>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td id="descripcion">Turno: </td>
+                        <td>
+                            <select name="turno" id="turno" [(ngModel)]="empleado.turno" [ngModelOptions]="{standalone: true}" >
+                                    <option id="select-opt" value="">Seleccione uno</option>
+                                    <option id="select-opt"  value="Matutino">Matutino</option>
+                                    <option id="select-opt"  value="Vespertino">Vespertino</option>
+                            </select>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td id="descripcion">Fecha de nacimiento: </td> 
+                        <td><input id="fechaNac" type="date" [(ngModel)]="empleado.fechaNac" [ngModelOptions]="{standalone: true}"></td>
+                    </tr>
+            
+            
+                    <tr>
+                        <td id="descripcion">Salario: </td> 
+                        <td><input id="salario" type="text" placeholder="Salario del empleado"[(ngModel)]="empleado.salario" [ngModelOptions]="{standalone: true}"></td>
+                    </tr>
+            
+            
+                    <tr>
+                        <td id="descripcion">Ingreso a la empresa: </td> 
+                        <td><input id="ingresoEmpre" type="date" [(ngModel)]="empleado.ingresoEmpresa" [ngModelOptions]="{standalone: true}"></td>
+                    </tr>
+            
+            
+                    <tr>
+                        <td id="descripcion">RFC: </td> 
+                        <td><input id="rfc" maxlenght="13" type="text" placeholder="RFC del empleado" [(ngModel)]="empleado.rfc" [ngModelOptions]="{standalone: true}"></td>
+                    </tr>
+            
+            
+                    <tr>
+                        <td id="descripcion">Dirección calle: </td> 
+                        <td><input id="direccionCalle" maxlenght="255" type="text" placeholder="Dirección calle del empleado" [(ngModel)]="empleado.direccionCalle" [ngModelOptions]="{standalone: true}"></td>
+                    </tr>
+            
+                    <tr>
+                        <td id="descripcion">Dirección colonia: </td> 
+                        <td><input id="direccionColonia" maxlenght="255" type="text" placeholder="Dirección colonia del empleado" [(ngModel)]="empleado.direccionColonia" [ngModelOptions]="{standalone: true}"></td>
+                    </tr>
+                
+                    <tr>
+                        <td id="descripcion">Telefóno: </td> 
+                        <td><input id="tele" maxlenght="10" type="text" placeholder="Telefóno del empleado" [(ngModel)]="empleado.telefono" [ngModelOptions]="{standalone: true}"></td>
+                    </tr>
+            
+                    <tr>
+                        <td id="descripcion">Email: </td> 
+                        <td><input id="email" type="email" placeholder="Correo electrónico del empleado" [(ngModel)]="empleado.correo" [ngModelOptions]="{standalone: true}"></td>
+                    </tr>
+            
+                    <tr>
+                        <td id="descripcion">Contraseña: </td> 
+                        <td><input id="contrasenia" type="password" placeholder="Contraseña de la cuenta del empleado" [(ngModel)]="empleado.password" [ngModelOptions]="{standalone: true}"></td>
+                    </tr>
+            
+            
+                    <tr>
+                        <td id="descripcion">Estado del empleado: </td>
+                        <td>
+                            <select name="estado" id="estado" [(ngModel)]="empleado.estado" [ngModelOptions]="{standalone: true}" >
+                                    <option id="select-opt"  value=""selected>Seleccione uno</option>
+                                    <option id="select-opt"  value="Activo">Activo</option>
+                                    <option id="select-opt"  value="De baja">Baja</option>
+                            </select>
+                        </td>
+                    </tr>
+                    </table>
+        
+        <div id="botones-empleado">
+            <input id="submit" type="button" name="btn-operacion" value="Guardar">
+            <input id="submit" type="button" name="btn-operacion" value="Modificar">
+            <input id="submit" type="button" name="btn-operacion" value="Buscar">
+            <input id="submit" type="button" name="btn-operacion" value="Eliminar">
+            <input id="submit" type="button" name="btn-operacion" value="Mostrar todo">
+            <!--
+            <input id="submit" type="submit" name="btn-operacion" (click)="limpiar() "value="Limpiar">
+            <input id="submit" type="button" name="btn-operacion" (click)="insertarEmp()" value="Guardar">
+            <input id="submit" type="button" name="btn-operacion" (click)="modificarEmp()" value="Modificar">
+            <input id="submit" type="button" name="btn-operacion" (click)="consultarEmp()" value="Buscar">
+            <input id="submit" type="button" name="btn-operacion" (click)="eliminarEmp()" value="Eliminar">
+            <input id="submit" type="button" name="btn-operacion" (click)="todoEmp()" value="Mostrar todo">
+            <input id="submit" type="submit" name="btn-operacion" (click)="limpiar() "value="Limpiar">
+            -->
+        </div>
+        
+        <br><br>
+    </form>
 </body>
 <footer>
     <app-footer></app-footer>
