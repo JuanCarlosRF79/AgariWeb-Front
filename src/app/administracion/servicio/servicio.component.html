@@ -1,137 +1,191 @@
+
 <header>
     <app-menu-bs></app-menu-bs>
-</header>
-<body>
-    <form id="form" class="topBefore" action="Envio.php" method="post">
-        <div id="datos-filtro" align="center">
-    <table>
-            <tr>
-                <td id="descripcion">Estado: </td> 
-                <td>
-                    <select name="estadoEnvio" id="metodoPago" [(ngModel)]="filtroEst" [ngModelOptions]="{standalone: true}">
-                    <option id="select-opt" value="" selected>Seleccione uno</option>
-                    <option id="select-opt"  value="Sin revisar">Sin revisar</option>
-                    <option id="select-opt"  value="Empaquetado">Empaquetado</option>
-                    <option id="select-opt"  value="Enviado">Enviado</option>
-                    <option id="select-opt"  value="Completado">Completado</option>
-                    <option id="select-opt"  value="Cancelado">Cancelado</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td id="descripcion">Última actualización: </td> 
-                <td><input id="filtroUltima" type="date" [(ngModel)]="filtroFech" [ngModelOptions]="{standalone: true}"></td>
-            </tr>
-    </table>
-        </div>
-        <div id="botones-filtro">
-            <input id="submit" type="button" name="btn-operacion" value="Filtrar">
-            <input id="submit" type="button" name="btn-operacion" value="Mostrar todo">
-            <!--
-            <input id="submit" type="button" name="btn-operacion" (click)="filtrarEst()" value="Filtrar">
-            <input id="submit" type="button" name="btn-operacion" (click)="filtrarTodo()" value="Mostrar todo">
-            -->
-        </div>
-    </form>
-    <!--
-    <div id="ancho">
-        <div id="contenedorTabla">
-            <table id="tabla" align="center">
-                <tr id="tituloTabla">
-                    <th>Código de servicio</th>
-                    <th>Nombre del cliente</th>
-                    <th>Apellido paterno del cliente</th>
-                    <th>Costo total</th>
-                    <th>Última actualización</th>
-                    <th>Fecha de finalización</th>
-                    <th>Estado</th>
-                </tr>
-                        <tr *ngFor="let serv of filtrado">
-                            <td align="center" id="textoTabla"> {{serv._id}}</td>
-                            <td align="center" id="textoTabla"> {{serv.cliente.nombreCli}} </td>
-                            <td align="center" id="textoTabla"> {{serv.cliente.apellidoPatCli}} </td>
-                            <td align="center" id="textoTabla"> {{serv.costoTotal}}</td>
-                            <td align="center" id="textoTabla"> {{serv.detallesEnvio.ultimaActualizacion}} </td>
-                            <td align="center" id="textoTabla"> {{serv.detallesEnvio.fechaFin}} </td>
-                            <td align="center" id="textoTabla"> {{serv.detallesEnvio.estadoEnvio}}</td>
-                        </tr>
-                    </table>
+  </header>
+  
+  <body>
+    <form id="form" class="topBefore" action="Envio.php" method="post" class="container w-50">
+      <div id="datos-filtro" class="container w-50" align="center">
+        <table class="table">
+          <tr>
+            <td class="empleado-atributo">
+              <div class="input-group-text bg-dark">
+                <div class="input-group-prepend w-10">
+                  <span class=""></span>
+                </div>
+                <span class="cliente-atributo">Estado:</span>
+              </div>
+            </td>
+            <td>
+              <select name="estadoEnvio" id="metodoPago" class="form-control cliente-input" [(ngModel)]="filtroEst"
+                [ngModelOptions]="{standalone: true}">
+                <option value="" selected>Seleccione uno</option>
+                <option value="Sin revisar">Sin revisar</option>
+                <option value="Empaquetado">Empaquetado</option>
+                <option value="Enviado">Enviado</option>
+                <option value="Completado">Completado</option>
+                <option value="Cancelado">Cancelado</option>
+              </select>
+            </td>
+          </tr>
+  
+          <tr>
+            <td class="empleado-atributo">
+              <div class="input-group-text bg-dark">
+                <div class="input-group-prepend w-10">
+                  <span class=""></span>
+                </div>
+                <span class="cliente-atributo">Última actualización:</span>
+              </div>
+            </td>
+            <td>
+              <input id="filtroUltima" type="date" class="form-control cliente-input" [(ngModel)]="filtroFech"
+                [ngModelOptions]="{standalone: true}">
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div id="botones-filtro" class="container text-center">
+        <div class="row justify-content-center">
+        <div class="col-md-auto">
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+          <div class="btn-group me-2" role="group" aria-label="First group">
+            <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" value="Filtrar">
+            <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" value="Mostrar todo">
+          </div>
         </div>
     </div>
-    -->
+</div>
+      </div>
+    </form>
+  
     <br><br>
-    <!-- Encabezado -->
-    <div id="encabezado">
-        <h1 align="center">Consultar y modificar envios</h1>
+  
+    <div id="encabezado" class="container text-center">
+      <h1>Consultar y modificar envíos</h1>
     </div>
-    
-    <!-- Linea -->
-    <div id="contenedor-linea">
-        <div id="linea">
+  
+    <div id="contenedor-linea" class="container">
+      <div id="linea"></div>
+    </div>
+  
+    <div id="contenedor-formulario" class="container">
+      <form id="form" class="topBefore" action="Envio.php" method="post">
+        <div id="datos-envio" class="container w-50" align="center">
+          <table class="table">
+            <tr>
+              <td class="empleado-atributo">
+                <div class="input-group-text bg-dark">
+                  <div class="input-group-prepend w-10">
+                    <span class=""></span>
+                  </div>
+                  <span class="cliente-atributo">Código de envío:</span>
+                </div>
+              </td>
+              <td>
+                <input id="idEnvio" type="text" class="form-control cliente-input" placeholder="Código de Envío"
+                  [(ngModel)]="envio.codigoTick" [ngModelOptions]="{standalone: true}">
+              </td>
+            </tr>
+            <tr>
+              <td class="empleado-atributo">
+                <div class="input-group-text bg-dark">
+                  <div class="input-group-prepend w-10">
+                    <span class=""></span>
+                  </div>
+                  <span class="cliente-atributo">Nombre del cliente:</span>
+                </div>
+              </td>
+              <td>
+                <input id="nombre_cli" maxlenght="50" type="text" class="form-control cliente-input"
+                  placeholder="Nombre del cliente" [(ngModel)]="envio.nombreCli" [ngModelOptions]="{standalone: true}">
+              </td>
+            </tr>
+            <tr>
+              <td class="empleado-atributo">
+                <div class="input-group-text bg-dark">
+                  <div class="input-group-prepend w-10">
+                    <span class=""></span>
+                  </div>
+                  <span class="cliente-atributo">Apellido paterno del cliente:</span>
+                </div>
+              </td>
+              <td>
+                <input id="apellidoPat_cli" maxlenght="50" type="text" class="form-control cliente-input"
+                  placeholder="Apellido del cliente" [(ngModel)]="envio.apellidoPatCli"
+                  [ngModelOptions]="{standalone: true}">
+              </td>
+            </tr>
+            <tr>
+              <td class="empleado-atributo">
+                <div class="input-group-text bg-dark">
+                  <div class="input-group-prepend w-10">
+                    <span class=""></span>
+                  </div>
+                  <span class="cliente-atributo">Última actualización:</span>
+                </div>
+              </td>
+              <td>
+                <input id="ultimActualizacion" type="date" class="form-control cliente-input"
+                  [(ngModel)]="envio.ultimaAct" [ngModelOptions]="{standalone: true}">
+              </td>
+            </tr>
+            <tr>
+              <td class="empleado-atributo">
+                <div class="input-group-text bg-dark">
+                  <div class="input-group-prepend w-10">
+                    <span class=""></span>
+                  </div>
+                  <span class="cliente-atributo">Fecha de finalización:</span>
+                </div>
+              </td>
+              <td>
+                <input id="fechaFinalizacion" type="date" class="form-control cliente-input"
+                  [(ngModel)]="envio.fechaFin" [ngModelOptions]="{standalone: true}">
+              </td>
+            </tr>
+            <tr>
+              <td class="empleado-atributo">
+                <div class="input-group-text bg-dark">
+                  <div class="input-group-prepend w-10">
+                    <span class=""></span>
+                  </div>
+                  <span class="cliente-atributo">Estado:</span>
+                </div>
+              </td>
+              <td>
+                <select name="estado" id="estado" class="form-select cliente-input" [(ngModel)]="envio.estadoEnvio"
+                  [ngModelOptions]="{standalone: true}">
+                  <option value="" selected>Seleccione uno</option>
+                  <option value="Sin revisar">Sin revisar</option>
+                  <option value="Empaquetado">Empaquetado</option>
+                  <option value="Enviado">Enviado</option>
+                  <option value="Completado">Completado</option>
+                  <option value="Cancelado">Cancelado</option>
+                </select>
+              </td>
+            </tr>
+          </table>
         </div>
-    </div>
-    <!-- Formulario -->
-    <div id="contenedor-formulario">
-        <form id="form" class="topBefore" action="Envio.php" method="post">
-            <div id="datos-envio" align="center">
-                <table>
-                        <tr>
-                            <td id="descripcion">Código de envio: </td> 
-                            <td><input id="idEnvio" type="text" placeholder="Código de Envio" [(ngModel)]="envio.codigoTick" [ngModelOptions]="{standalone: true}"></td>
-                        </tr>
-                
-                        <tr>
-                            <td id="descripcion">Nombre del cliente: </td> 
-                            <td><input id="nombre_cli" maxlenght="50" type="text" placeholder="Nombre del cliente" [(ngModel)]="envio.nombreCli" [ngModelOptions]="{standalone: true}"></td>
-                        </tr>
-                
-                        <tr>
-                            <td id="descripcion">Apellido paterno del cliente: </td> 
-                            <td><input id="apellidoPat_cli" maxlenght="50" type="text" placeholder="Apellido del cliente" [(ngModel)]="envio.apellidoPatCli" [ngModelOptions]="{standalone: true}"></td>
-                        </tr>
-                
-                        <tr>
-                            <td id="descripcion">Última actualización: </td> 
-                            <td><input id="ultimActualizacion" type="date" [(ngModel)]="envio.ultimaAct" [ngModelOptions]="{standalone: true}"></td>
-                        </tr>
-    
-                        <tr>
-                            <td id="descripcion">Fecha de finalización: </td> 
-                            <td><input id="ultimActualizacion" type="date" [(ngModel)]="envio.fechaFin" [ngModelOptions]="{standalone: true}"></td>
-                        </tr>
-                
-                        <tr>
-                            <td id="descripcion">Estado: </td> 
-                            <td>
-                                <select name="estado" id="estado" [(ngModel)]="envio.estadoEnvio" [ngModelOptions]="{standalone: true}">
-                                    <option id="select-opt" value="" selected>Seleccione uno</option>
-                                    <option id="select-opt"  value="Sin revisar">Sin revisar</option>
-                                    <option id="select-opt"  value="Empaquetado">Empaquetado</option>
-                                    <option id="select-opt"  value="Enviado">Enviado</option>
-                                    <option id="select-opt"  value="Completado">Completado</option>
-                                    <option id="select-opt"  value="Cancelado">Cancelado</option>
-                                </select>
-                            </td>
-                        </tr>
-                        </table>
+        <div id="botones-venta" class="container text-center">
+            <div class="row justify-content-center">
+                <div class="col-md-auto">
+          <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group me-2" role="group" aria-label="First group">
+              <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" value="Modificar">
+              <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" value="Buscar">
+              <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" value="Eliminar">
+              <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" value="Mostrar todo">
+              <input id="submit" type="submit" name="btn-operacion" class="btn btn-primary" value="Limpiar">
             </div>
-        <div id="botones-venta">
-            <input id="submit" type="button" name="btn-operacion"  value="Modificar">
-            <input id="submit" type="button" name="btn-operacion"  value="Buscar">
-            <input id="submit" type="button" name="btn-operacion"  value="Eliminar">
-            <input id="submit" type="button" name="btn-operacion"  value="Mostrar todo">
-            <input id="submit" type="submit" name="btn-operacion" value="Limpiar">
-            <!--
-            <input id="submit" type="button" name="btn-operacion" (click)="modificarEnv()" value="Modificar">
-            <input id="submit" type="button" name="btn-operacion" (click)="consultarEnv()" value="Buscar">
-            <input id="submit" type="button" name="btn-operacion" (click)="eliminarEnv()" value="Eliminar">
-            <input id="submit" type="button" name="btn-operacion" (click)="todoEnv()" value="Mostrar todo">
-            <input id="submit" type="submit" name="btn-operacion" value="Limpiar">
-            -->
+          </div>
         </div>
-    </form>
+        </div>
+        </div>
+      </form>
     </div>
-</body>
-<footer>
+  </body>
+  
+  <footer>
     <app-footer></app-footer>
-</footer>
+  </footer>

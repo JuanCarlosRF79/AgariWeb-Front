@@ -5,7 +5,7 @@
     <div class="contenido">
         <br>
         <div id="encabezado" align="center">
-            <p> Clientesssssssssssss </p>   
+            <p> Clientes </p>   
         </div>
         <br>
             <form id="form" class="topBefore" method="post">
@@ -45,7 +45,7 @@
                             
                     <div class="row justify-content-md-center mb-2">
                         <div class="input-group mb-auto">
-                            <div class="input-group-prepend">
+                            <div class="input-group-prepend w-25">
                                 <span class="input-group-text bg-dark">Fecha de nacimiento: </span>
                             </div>
                             <input class="form-control" id="fechaNac" type="date" [(ngModel)]="cliente.fechaNac" [ngModelOptions]="{standalone: true}" >
@@ -120,8 +120,9 @@
                     </div>
                         
                 
-                <div id="botones-cliente" class="row justify-content-md-center">
-                    <div class="col md-auto">
+                    <div id="botones-cliente" class="container text-center">
+                        <div class="row justify-content-center">
+                          <div class="col-md-auto">
                         <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                             <div class="btn-group me-2" role="group" aria-label="First group">
                                 <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" value="Guardar">
@@ -141,6 +142,7 @@
                     <input id="submit" type="button" name="btn-operacion" (click)="todoCli()" value="Mostrar todo">
                     <input id="submit" type="submit" name="btn-operacion" (click)="limpiar()" value="Limpiar" >
                     -->
+                </div>
                 </div>
                 </div>
                 <br><br>
