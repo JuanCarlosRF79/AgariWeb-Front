@@ -48,85 +48,86 @@
                     <input id="Stock:" maxlenght="100" type="number" placeholder="Cantidad de producto disponible"  [(ngModel)]="producto.stock" [ngModelOptions]="{standalone: true}">
                 </div>
             </div>
-
-                   <!-- <tr>
-                        <td id="descripcion">Stock: </td> 
-                        <td><input id="stock" type="number" maxlenght="100" placeholder="Cantidad de producto disponible" [(ngModel)]="producto.stock" [ngModelOptions]="{standalone: true}"></td>
-                    </tr> -->
-                    <div class="row justify-content-md-center mb-2">
+                <div class="row justify-content-md-center mb-2">
                         <div class="input-group mb-auto">
                             <div class="input-group-prepend w-25">
                                 <span class="input-group-text bg-dark">Descripción: </span>
                             </div>
-                            <inputid="descripcionProd" type="text" placeholder="Descripción del producto" [(ngModel)]="producto.descripcionProd" [ngModelOptions]="{standalone: true}">
-                        </div>
+                             <inputid="descripcionProd" type="text" placeholder="Descripción del producto" [(ngModel)]="producto.descripcionProd" [ngModelOptions]="{standalone: true}">
+                    
+               <!--  </div>
+             </div> -->
+             <div class="row justify-content-md-center mb-2">
+                <div class="input-group mb-auto">
+                    <div class="input-group-prepend w-25">
+                        <span class="input-group-text bg-dark">Marca </span>
                     </div>
-                  <!--  <tr>
-                        <td id="descripcion">Descripción: </td> 
-                        <td><input id="descripcionProd" type="text" placeholder="Descripción del producto" [(ngModel)]="producto.descripcionProd" [ngModelOptions]="{standalone: true}" ></td>
-                    </tr>-->
+                    <select name="marca" id="marca" class="form-select" [(ngModel)]="producto.marca" [ngModelOptions]="{standalone: true}">
+                        <option id="select-opt" value="" selected>Seleccione uno</option>
+                        <option id="select-opt"  value="Generica">Generica</option>
+                        <option id="select-opt"  value="Maytag">Maytag</option>
+                        <option id="select-opt"  value="Samsung">Samsung</option>
+                        <option id="select-opt"  value="Mabe">Mabe</option>
+                        <option id="select-opt"  value="Whirpool">Whirpool</option>
+                        <option id="select-opt"  value="LG">LG</option>
+                        <option id="select-opt"  value="Frigidaire">Frigidaire</option>
+                        <option id="select-opt"  value="Electrolux">Electrolux</option>
+                    </select>
+                    </div>
+            </div>
 
-                    <div class="row justify-content-md-center mb-2">
-                        <div class="input-group mb-auto">
-                          <div class="input-group-prepend w-25">
-                            <span class="input-group-text bg-dark">Marca </span>
-                          </div>
-
-                            <!-- <tr>
-                                <td id="descripcion">Marca: </td>
-                                <td> -->
-                                    <select name="marca" id="marca" class="form-select" [(ngModel)]="producto.marca" [ngModelOptions]="{standalone: true}">
-                                       <!--  <select name="marca" id="marca" [(ngModel)]="producto.marca" [ngModelOptions]="{standalone: true}"> -->
-                                            <option id="select-opt" value="" selected>Seleccione uno</option>
-                                            <option id="select-opt"  value="Generica">Generica</option>
-                                            <option id="select-opt"  value="Maytag">Maytag</option>
-                                            <option id="select-opt"  value="Samsung">Samsung</option>
-                                            <option id="select-opt"  value="Mabe">Mabe</option>
-                                            <option id="select-opt"  value="Whirpool">Whirpool</option>
-                                            <option id="select-opt"  value="LG">LG</option>
-                                            <option id="select-opt"  value="Frigidaire">Frigidaire</option>
-                                            <option id="select-opt"  value="Electrolux">Electrolux</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                 
-            
-            
-                            <tr>
-                                <td id="descripcion">Condición: </td>
-                                    <td>
-                                        <select name="condicion" id="condicion" [(ngModel)]="producto.condicion" [ngModelOptions]="{standalone: true}">
-                                            <option id="select-opt" value="" selected>Seleccione uno</option>
-                                            <option id="select-opt"  value="Nuevo">Nuevo</option>
-                                            <option id="select-opt"  value="Semi-nuevo">Semi-nuevo</option>
-                                            <option id="select-opt"  value="Usado">Usado</option>
-                                        </select>
-                                    </td>
-                            </tr>
-                            <tr>
-                                <td id="descripcion">Estado: </td>
-                                    <td>
-                                        <select name="estado" id="estado" [(ngModel)]="producto.estado" [ngModelOptions]="{standalone: true}">
-                                            <option id="select-opt" value="">Seleccione uno</option>
+            <div class="row justify-content-md-center mb-2">
+                <div class="input-group mb-auto">
+                  <div class="input-group-prepend w-25">
+                    <span class="input-group-text bg-dark">Condición: </span>
+                  </div>
+                  <select name="condicion" id="condicion" class="form-select" [(ngModel)]="producto.condicion" [ngModelOptions]="{standalone: true}">
+                    <option id="select-opt" value="" selected>Seleccione uno</option>
+                    <option id="select-opt"  value="Nuevo">Nuevo</option>
+                    <option id="select-opt"  value="Semi-nuevo">Semi-nuevo</option>
+                    <option id="select-opt"  value="Usado">Usado</option>
+                </select>
+            </div>
+        </div>
+                        <div class="row justify-content-md-center mb-2">
+                            <div class="input-group mb-auto">
+                            <div class="input-group-prepend w-25">
+                                <span class="input-group-text bg-dark">Estado: </span>
+                            </div>
+                            <select name="estado" id="estado" class="form-select" [(ngModel)]="producto.estado" [ngModelOptions]="{standalone: true}">
+                                <option id="select-opt" value="">Seleccione uno</option>
                                             <option id="select-opt"  value="Existente">Existente</option>
                                             <option id="select-opt"  value="Sin existencia">Sin existencia</option>
                                             <option id="select-opt"  value="Descontinuado">Descontinuado</option>
                                         </select>
-                                    </td>
-                            </tr>
-    
-                            <tr>
-                                <td id="descripcion">Imagén: </td> 
-                                <!--
-                                <input type="file" id="imagen" name="imagen" class="imagen" accept="image/png, image/jpeg, image/jpg" (change)="fotoseleccionada($event)">
-                                -->
-                                <div class="custom-input-file col-md-6 col-sm-6 col-xs-6">
-                                    <input type="file" id="imagen" name="imagen" class="imagen" accept="image/png, image/jpeg, image/jpg">
-                                    Seleccionar una imagén...
+                                    </div>
                                 </div>
-                            </tr>
+                           
     
-                            <tr>
+                                <div class="row justify-content-md-center mb-2">
+                                    <div class="input-group mb-auto">
+                                        <div class="input-group-prepend w-25">
+                                            <span class="input-group-text bg-dark">Imagén: </span>
+                                        </div>
+                                        <div class="custom-input-file col-md-6 col-sm-6 col-xs-6">
+                                            <input type="file" id="imagen" name="imagen" class="imagen" accept="image/png, image/jpeg, image/jpg">
+                                            Seleccionar una imagén...
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-md-center mb-2">
+                                    <div class="input-group mb-auto">
+                                        <div class="input-group-prepend w-25">
+                                        </div>
+                                        <img *ngIf="producto.imgurl != ''; else esvacio" src="{{ producto.imgurl }}" alt="" width="250px" height="250px">
+                                    <ng-template #esvacio>
+                                        <img src="assets/nodisponible.png" alt="" width="250px" height="250px">
+                                    </ng-template>
+                                </div>
+                            </div>
+
+
+                         <!--    <tr>
                                 <td>
                                 </td>
                                 <td><img *ngIf="producto.imgurl != ''; else esvacio" src="{{ producto.imgurl }}" alt="" width="250px" height="250px">
@@ -134,11 +135,16 @@
                                         <img src="assets/nodisponible.png" alt="" width="250px" height="250px">
                                     </ng-template>
                                 </td>
-                            </tr>
+                            </tr> -->
                     
                     
-        </div>
-        <div id="botones-producto">
+       <!--  </div> -->
+        <div id="botones-producto" class="container text-center">
+            <div class="row justify-content-center">
+              <div class="col-md-auto">
+                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                  <div class="btn-group me-2" role="group" aria-label="First group">
+        
             <!--
             <input id="submit" type="button" name="btn-operacion" (click)="insertarProd()" value="Guardar">
             <input id="submit" type="button" name="btn-operacion" (click)="modificarProd()" value="Modificar">
@@ -154,9 +160,17 @@
             <input id="submit" type="button" name="btn-operacion" value="Mostrar todo">
             <input id="submit" type="submit" name="btn-operacion" value="Limpiar">
         </div>
-    </form>
-    </div>    
+    </div>
+    <br><br>
+ <!--  </form> -->
+</div>
 </body>
+         <!-- </div>
+        </div>
+        <br><br>
+      </form>
+    </div>
+  </body> -->
 <footer>
     <app-footer></app-footer>
 </footer>
