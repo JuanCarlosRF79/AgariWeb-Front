@@ -53,15 +53,30 @@
                         <td id="descripcion">Stock: </td> 
                         <td><input id="stock" type="number" maxlenght="100" placeholder="Cantidad de producto disponible" [(ngModel)]="producto.stock" [ngModelOptions]="{standalone: true}"></td>
                     </tr> -->
-
-                    <tr>
+                    <div class="row justify-content-md-center mb-2">
+                        <div class="input-group mb-auto">
+                            <div class="input-group-prepend w-25">
+                                <span class="input-group-text bg-dark">Descripción: </span>
+                            </div>
+                            <inputid="descripcionProd" type="text" placeholder="Descripción del producto" [(ngModel)]="producto.descripcionProd" [ngModelOptions]="{standalone: true}">
+                        </div>
+                    </div>
+                  <!--  <tr>
                         <td id="descripcion">Descripción: </td> 
                         <td><input id="descripcionProd" type="text" placeholder="Descripción del producto" [(ngModel)]="producto.descripcionProd" [ngModelOptions]="{standalone: true}" ></td>
-                    </tr>
-                            <tr>
+                    </tr>-->
+
+                    <div class="row justify-content-md-center mb-2">
+                        <div class="input-group mb-auto">
+                          <div class="input-group-prepend w-25">
+                            <span class="input-group-text bg-dark">Marca </span>
+                          </div>
+
+                            <!-- <tr>
                                 <td id="descripcion">Marca: </td>
-                                <td>
-                                        <select name="marca" id="marca" [(ngModel)]="producto.marca" [ngModelOptions]="{standalone: true}">
+                                <td> -->
+                                    <select name="marca" id="marca" class="form-select" [(ngModel)]="producto.marca" [ngModelOptions]="{standalone: true}">
+                                       <!--  <select name="marca" id="marca" [(ngModel)]="producto.marca" [ngModelOptions]="{standalone: true}"> -->
                                             <option id="select-opt" value="" selected>Seleccione uno</option>
                                             <option id="select-opt"  value="Generica">Generica</option>
                                             <option id="select-opt"  value="Maytag">Maytag</option>
@@ -72,8 +87,9 @@
                                             <option id="select-opt"  value="Frigidaire">Frigidaire</option>
                                             <option id="select-opt"  value="Electrolux">Electrolux</option>
                                         </select>
-                                    </td>
-                            </tr>        
+                                    </div>
+                                </div>
+                                 
             
             
                             <tr>
