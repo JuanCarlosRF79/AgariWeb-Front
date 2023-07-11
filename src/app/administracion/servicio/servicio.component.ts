@@ -7,33 +7,37 @@ import { Component } from '@angular/core';
 })
 export class ServicioComponent {
 
+  alertaArriba=false;
+  alertaAbajo=false;
+  exito=false;
+
   descripcionAlert="";
 
   filtrado:any;
   filtroEst="";
   filtroFech="";
 
+  servicios:any;
 
-  envio={
+  servicio={
     codigoTick:"",
     nombreCli:"",
     apellidoPatCli:"",
+    nombreEmp:"",
+    apellidoPatEmp:"",
     telefono:"",
    // descuento: "",        
     //descuentoDesc: "",
     metodoPago : "",
-    tipoTicket :  "Envio",
+    tipoTicket :  "Servicio",
     
     calle : "",
     colonia : "",
-    ultimaAct : "",
-    estadoEnvio : "",
+    descViv : "",
+    descProb : "",
+    fechaSol : "",
+    estado : "",
     fechaFin :  "",
-
-    nombreProd:"",
-    costoIndividual:"",
-    cantidadVendida:"",
-    total:"",
 
     costoTotal : "",
     fechaTicket : ""
