@@ -2,32 +2,58 @@
     <app-menu-bs></app-menu-bs>
 </header>
 <body>
-    <div class="topBefore">
-        <div id="datos-producto" align="center">
-            <table>
+    
+    <div class="contenido">
+        <br>
+        <div id="encabezado" class="text-center">
+          <p>Productos</p>
+        </div>
+       <!-- action="producto.php"   no se si lleve -->
+        <form id="form" class="topBefore"  method="post">
+            <div id="datos-producto" class="container w-50" align="center">
+
+                <div class="row justify-content-md-center mb-2">
+                    <div class="input-group mb-auto">
+                        <div class="input-group-prepend w-25">
+                            <span class="input-group-text bg-dark">Nombre: </span>
+                        </div>
+                        <input id="nombre" maxlenght="50" type="text" placeholder="Nombre del Producto"  [(ngModel)]="producto.nombreProd" [ngModelOptions]="{standalone: true}">
+                    </div>
+                </div>
                 <!--
                     <tr>
                         <td id="descripcion">Código de producto: </td> 
                         <td><input id="idProducto" type="number" placeholder="Código del producto" value=""></td>
                     </tr>
                 -->
-            
-                    <tr>
-                        <td id="descripcion">Nombre: </td> 
-                        <td><input id="nombre" maxlenght="50" type="text" placeholder="Nombre del producto" [(ngModel)]="producto.nombreProd" [ngModelOptions]="{standalone: true}"></td>
-                    </tr>
-            
-                
+                <div class="row justify-content-md-center mb-2">
+                    <div class="input-group mb-auto">
+                        <div class="input-group-prepend w-25">
+                            <span class="input-group-text bg-dark">Precio a venta: </span>
+                        </div>
+                        <input id="costoIndividual" maxlenght="9" type="text" placeholder="Precio del producto al público"  [(ngModel)]="producto.costoIndividual" [ngModelOptions]="{standalone: true}">
+                    </div>
+                </div>
+                <!--
                     <tr>
                         <td id="descripcion">Precio a venta: </td> 
                         <td><input id="costoIndividual" maxlenght="9" type="number" placeholder="Precio del producto al público" [(ngModel)]="producto.costoIndividual" [ngModelOptions]="{standalone: true}"></td>
                     </tr>
-            
-            
-                    <tr>
+             -->
+             <div class="row justify-content-md-center mb-2">
+                <div class="input-group mb-auto">
+                    <div class="input-group-prepend w-25">
+                        <span class="input-group-text bg-dark">Stock: </span>
+                    </div>
+                    <input id="Stock:" maxlenght="100" type="number" placeholder="Cantidad de producto disponible"  [(ngModel)]="producto.stock" [ngModelOptions]="{standalone: true}">
+                </div>
+            </div>
+
+                   <!-- <tr>
                         <td id="descripcion">Stock: </td> 
                         <td><input id="stock" type="number" maxlenght="100" placeholder="Cantidad de producto disponible" [(ngModel)]="producto.stock" [ngModelOptions]="{standalone: true}"></td>
-                    </tr>
+                    </tr> -->
+
                     <tr>
                         <td id="descripcion">Descripción: </td> 
                         <td><input id="descripcionProd" type="text" placeholder="Descripción del producto" [(ngModel)]="producto.descripcionProd" [ngModelOptions]="{standalone: true}" ></td>
@@ -94,7 +120,7 @@
                                 </td>
                             </tr>
                     
-                    </table>
+                    
         </div>
         <div id="botones-producto">
             <!--
@@ -112,6 +138,7 @@
             <input id="submit" type="button" name="btn-operacion" value="Mostrar todo">
             <input id="submit" type="submit" name="btn-operacion" value="Limpiar">
         </div>
+    </form>
     </div>    
 </body>
 <footer>
