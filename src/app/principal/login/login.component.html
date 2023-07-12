@@ -1,16 +1,17 @@
-<header>
-
-</header>
-<body>
-    <div class="container">
-        <form>
-            <input type="email" [(ngModel)]="usuario.correo" [ngModelOptions]="{standalone: true}" id="inputEmail" class="form-control" placeholder="Correo Electronico" required="" autofocus="">
-            <input type="password" [(ngModel)]="usuario.password" [ngModelOptions]="{standalone: true}" id="inputPassword" class="form-control" placeholder="Contraseña" required="">
+<div class="login-page">
+    <h1>Iniciar Sesión</h1>
+    <div class="form">
+      <span>
+        <img src="./assets/img/logo/agariDibujo.png" class="logo">
+    </span>
+       <form method="post">
+          <input type="email" [(ngModel)]="usuario.correo" [ngModelOptions]="{standalone: true}" id="inputEmail" class="form-control" placeholder="Correo Electronico" required="" autofocus="">
+              <input type="password" [(ngModel)]="usuario.password" [ngModelOptions]="{standalone: true}" id="inputPassword" class="form-control" placeholder="Contraseña" required="">
+              
             
-            <button class="btn btn-success btn-block" type="submit" (click)="login()"><i class="fas fa-sign-in-alt"></i> Inicia Sesión</button>
-            </form>
+      </form>
+      <button class="btn btn-success btn-block" type="submit" (click)="login()"><i class="fas fa-sign-in-alt"></i> Inicia Sesión</button>
+   
+      </form>
     </div>
-</body>
-<footer>
-
-</footer>
+  </div>

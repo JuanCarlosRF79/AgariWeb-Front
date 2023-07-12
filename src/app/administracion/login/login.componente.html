@@ -5,11 +5,12 @@
       <img src="./assets/img/logo/agariDibujo.png" class="logo">
   </span>
      <form method="post">
-    	<input type="text" name="u" placeholder="Nombre de usuario o correo" required="required" />
-        <input type="password" name="p" placeholder="Contraseña" required="required" />
-    
+    	<input type="email" [(ngModel)]="usuario.correo" [ngModelOptions]="{standalone: true}" id="inputEmail" class="form-control" placeholder="Correo Electronico" required="" autofocus="">
+            <input type="password" [(ngModel)]="usuario.password" [ngModelOptions]="{standalone: true}" id="inputPassword" class="form-control" placeholder="Contraseña" required="">
+            
+          
     </form>
-             <button type="submit" class="btn btn-primary btn-block btn-large">Entrar</button>
+    <button class="btn btn-success btn-block" type="submit" (click)="login()"><i class="fas fa-sign-in-alt"></i> Inicia Sesión</button>
  
     </form>
   </div>
