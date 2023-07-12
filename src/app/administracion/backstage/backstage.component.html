@@ -43,14 +43,17 @@
                 </div>
             </div>
             <div class="row justify-content-md-center">
-                <div class="col-4">
+                <div class="col-4" *ngFor="let serv of servicios" >
                     <div class="container shadow p-2 mb-5 bg-white rounded">
                         <div class="row">
                             <div class="col-7">
-                                <h4>Servicio</h4>
+                                <h4>Servicio {{serv.idServicio}}</h4>
                             </div>
                             <div class="col-5">
                                 <a style="text-decoration:none;" routerLink="../servicio"><h6>Más información</h6></a>
+                            </div>
+                            <div class="col">
+                                
                             </div>
                         </div>
                     </div>
