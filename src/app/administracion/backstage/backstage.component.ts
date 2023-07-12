@@ -28,4 +28,10 @@ export class BackstageComponent implements OnInit {
     );
   }
 
+  formatoFecha(dates:any){
+  var date = (dates);
+  var currentDate = date.slice(0, 10);
+  return currentDate;
+  }
+
 }
