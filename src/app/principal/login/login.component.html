@@ -1,0 +1,16 @@
+<header>
+
+</header>
+<body>
+    <div class="container">
+        <form>
+            <input type="email" [(ngModel)]="usuario.correo" [ngModelOptions]="{standalone: true}" id="inputEmail" class="form-control" placeholder="Correo Electronico" required="" autofocus="">
+            <input type="password" [(ngModel)]="usuario.password" [ngModelOptions]="{standalone: true}" id="inputPassword" class="form-control" placeholder="Contraseña" required="">
+            
+            <button class="btn btn-success btn-block" type="submit" (click)="login()"><i class="fas fa-sign-in-alt"></i> Inicia Sesión</button>
+            </form>
+    </div>
+</body>
+<footer>
+
+</footer>
