@@ -69,15 +69,15 @@
           </tr>
                   <!--<tr *ngFor="let serv of filtrado">-->
                   <tr>
-                      <td align="center" id="textoTabla"> </td>
-                      <td align="center" id="textoTabla"> </td>
-                      <td align="center" id="textoTabla"> </td>
-                      <td align="center" id="textoTabla"> </td>
-                      <td align="center" id="textoTabla"> </td>
-                      <td align="center" id="textoTabla"> </td>
-                      <td align="center" id="textoTabla"> </td>
-                      <td align="center" id="textoTabla"> </td>
-                      <td align="center" id="textoTabla"> </td>
+                      <td align="center" id="textoTabla"> Código de servicio</td>
+                      <td align="center" id="textoTabla"> Código de servicio </td>
+                      <td align="center" id="textoTabla"> Código de servicio</td>
+                      <td align="center" id="textoTabla"> Código de servicio</td>
+                      <td align="center" id="textoTabla"> Código de servicio</td>
+                      <td align="center" id="textoTabla"> Código de servicio</td>
+                      <td align="center" id="textoTabla"> Código de servicio</td>
+                      <td align="center" id="textoTabla"> Código de servicio</td>
+                      <td align="center" id="textoTabla"> Código de servicio</td>
                   </tr>
               </table>
   </div>
@@ -96,83 +96,87 @@
   </div>
 </div>
 
-
+<div class="container">
+<h1 align="center">si</h1>
+</div>
 
 <!-- Formulario -->
-<div id="contenedor-formulario">
-  <form id="form" class="topBefore" action="Envio.php" method="post">
-      <div id="datos-servicio" align="center">
-          <table>
+<div class="container">
+  <form id="form" action="Envio.php" method="post">
+    
+      <div id="datos-servicio" align="center" class="container">
+          
 
-                  <tr>
-                      <td id="descripcion">Código de servicio: </td> 
-                      <td><input id="idServicio" placeholder="Código del servicio" [(ngModel)]="servicio.codigoTick" [ngModelOptions]="{standalone: true}"></td>
-                  <tr>
+                     
+                      Código de servicio:  
+                      <input id="idServicio"  placeholder="Código del servicio"  class="form-control" [(ngModel)]="servicio.codigoTick" [ngModelOptions]="{standalone: true}">
+                  
           
                   <tr>
-                      <td id="descripcion">Nombre: </td> 
-                      <td><input id="nombre_cli" maxlenght="100" type="text" placeholder="Nombre del cliente" [(ngModel)]="servicio.nombreCli" [ngModelOptions]="{standalone: true}"></td>
+                      <td id="descripcion" class="input-group-text bg-dark text-white">Nombre: </td> 
+                      <td><input id="nombre_cli" maxlenght="100" type="text" class="form-control"  placeholder="Nombre del cliente" [(ngModel)]="servicio.nombreCli" [ngModelOptions]="{standalone: true}"></td>
                   </tr>
           
                   <tr>
-                      <td id="descripcion">Apellido paterno: </td> 
-                      <td><input id="apellidoPat_cli" maxlenght="100" type="text" placeholder="Apellido paterno del cliente" [(ngModel)]="servicio.apellidoPatCli" [ngModelOptions]="{standalone: true}"></td>
+                      <td id="descripcion" class="input-group-text bg-dark text-white">Apellido paterno: </td> 
+                      <td><input id="apellidoPat_cli" maxlenght="100" type="text" class="form-control" placeholder="Apellido paterno del cliente" [(ngModel)]="servicio.apellidoPatCli" [ngModelOptions]="{standalone: true}"></td>
                   </tr>
 
                   <tr>
-                      <td id="descripcion">Teléfono: </td> 
-                      <td><input id="apellidoPat_cli" maxlenght="100" type="text" placeholder="Teléfono para contactar al cliente" [(ngModel)]="servicio.telefono" [ngModelOptions]="{standalone: true}"></td>
+                      <td id="descripcion" class="input-group-text bg-dark text-white">Teléfono: </td> 
+                      <td><input id="apellidoPat_cli" maxlenght="100" type="text" class="form-control" placeholder="Teléfono para contactar al cliente" [(ngModel)]="servicio.telefono" [ngModelOptions]="{standalone: true}"></td>
                   </tr>
               
                   <tr>
-                      <td id="descripcion">Nombre: </td> 
-                      <td><input id="nombre_emp" maxlenght="100" type="text" placeholder="Nombre del empleado" [(ngModel)]="servicio.nombreEmp" [ngModelOptions]="{standalone: true}"></td>
+                      <td id="descripcion" class="input-group-text bg-dark text-white">Nombre: </td> 
+                      <td><input id="nombre_emp" maxlenght="100" type="text" class="form-control" placeholder="Nombre del empleado" [(ngModel)]="servicio.nombreEmp" [ngModelOptions]="{standalone: true}"></td>
                   </tr>
               
           
                   <tr>
-                      <td id="descripcion">Apellido paterno: </td> 
-                      <td><input id="apellidoPat_emp" maxlenght="100" type="text" placeholder="Apellido del empleado" [(ngModel)]="servicio.apellidoPatEmp" [ngModelOptions]="{standalone: true}"></td>
+                      <td id="descripcion" class="input-group-text bg-dark text-white">Apellido paterno: </td> 
+                      <td><input id="apellidoPat_emp" maxlenght="100" type="text" class="form-control" placeholder="Apellido del empleado" [(ngModel)]="servicio.apellidoPatEmp" [ngModelOptions]="{standalone: true}"></td>
                   </tr>
           
                   <tr>
-                      <td id="descripcion">Dirección calle: </td> 
-                      <td><input id="direccionCalle" maxlenght="255" type="text" placeholder="Dirección calle del cliente" [(ngModel)]="servicio.calle" [ngModelOptions]="{standalone: true}"></td>
+                      <td id="descripcion" class="input-group-text bg-dark text-white">Dirección calle: </td> 
+                      <td><input id="direccionCalle" maxlenght="255" type="text" class="form-control" placeholder="Dirección calle del cliente" [(ngModel)]="servicio.calle" [ngModelOptions]="{standalone: true}"></td>
                   </tr>
           
                   <tr>
-                      <td id="descripcion">Dirección colonia: </td> 
-                      <td><input id="direccionColonia" maxlenght="255" type="text" placeholder="Dirección colonia del cliente" [(ngModel)]="servicio.colonia" [ngModelOptions]="{standalone: true}"></td>
+                      <td id="descripcion" class="input-group-text bg-dark text-white">Dirección colonia: </td> 
+                      <td><input id="direccionColonia" maxlenght="255" type="text" class="form-control" placeholder="Dirección colonia del cliente" [(ngModel)]="servicio.colonia" [ngModelOptions]="{standalone: true}"></td>
                   </tr>
           
                   <tr>
-                      <td id="descripcion">Descripción de la vivienda: </td> 
-                      <td><textarea class="textaco" id="descripcionDireccion" maxlenght="255" type="text" placeholder="Descripción de la vivienda del cliente" [(ngModel)]="servicio.descViv" [ngModelOptions]="{standalone: true}"></textarea></td>
+                      <td id="descripcion" class="input-group-text bg-dark text-white">Descripción de la vivienda: </td> 
+                      <td><textarea class="textaco" id="descripcionDireccion" maxlenght="255" type="text" class="form-control" placeholder="Descripción de la vivienda del cliente" [(ngModel)]="servicio.descViv" [ngModelOptions]="{standalone: true}"></textarea></td>
                   </tr>
           
                   <tr>
-                      <td id="descripcion">Descripción del problema: </td> 
-                      <td><textarea id="descripcionProblema" class="textaco" type="text" placeholder="Descripción del problema que tiene el cliente" [(ngModel)]="servicio.descProb" [ngModelOptions]="{standalone: true}"></textarea></td>
+                      <td id="descripcion" class="input-group-text bg-dark text-white">Descripción del problema: </td> 
+                      <td><textarea id="descripcionProblema" class="textaco" type="text" class="form-control" placeholder="Descripción del problema que tiene el cliente" [(ngModel)]="servicio.descProb" [ngModelOptions]="{standalone: true}"></textarea></td>
                   </tr>
           
                   <tr>
-                      <td id="descripcion">Costo total: </td> 
-                      <td><input id="pagoServicio" maxlenght="9" type="number" placeholder="Coste del servicio (Puede variar después de una visita)" [(ngModel)]="servicio.costoTotal" [ngModelOptions]="{standalone: true}"></td>
+                      <td id="descripcion" class="input-group-text bg-dark text-white">Costo total: </td> 
+                      <td><input id="pagoServicio" maxlenght="9" type="number" class="form-control" placeholder="Coste del servicio (Puede variar después de una visita)" [(ngModel)]="servicio.costoTotal" [ngModelOptions]="{standalone: true}"></td>
                   </tr>
           
                   <tr>
-                      <td id="descripcion">Fecha de la solicitud: </td> 
-                      <td><input id="fechaOrden" type="date" [(ngModel)]="servicio.fechaSol" [ngModelOptions]="{standalone: true}"></td>
+                      <td id="descripcion" class="input-group-text bg-dark text-white">Fecha de la solicitud: </td> 
+                      <td><input id="fechaOrden" type="date" class="form-control" [(ngModel)]="servicio.fechaSol" [ngModelOptions]="{standalone: true}"></td>
                   </tr>
           
                   <tr>
-                      <td id="descripcion">Fecha de finalización: </td> 
-                      <td><input id="fechaFinalizado" type="date" [(ngModel)]="servicio.fechaFin" [ngModelOptions]="{standalone: true}"></td>
+                      <td id="descripcion" class="input-group-text bg-dark text-white">Fecha de finalización: </td> 
+                      <td><input id="fechaFinalizado" type="date" class="form-control" [(ngModel)]="servicio.fechaFin" [ngModelOptions]="{standalone: true}"></td>
                   </tr>
           
                   <tr>
-                      <td id="descripcion">Estado: </td> 
+                      <td id="descripcion" class="input-group-text bg-dark text-white">Estado: </td> 
                       <td>
+                        <br>
                           <select name="estado" id="estado"[(ngModel)]="servicio.estado" [ngModelOptions]="{standalone: true}">
                                           <option id="select-opt" value="" selected>Seleccione uno</option>
                                           <option id="select-opt"  value="Sin revisar">Sin revisar</option>
@@ -183,7 +187,7 @@
                           </select>
                       </td>
                   </tr>
-              </table>
+              
       </div>
       <div id="botones-venta">
           <input id="submit" type="button" name="btn-operacion" value="Guardar">
@@ -234,22 +238,22 @@
               </tr>
                       <!--<tr *ngFor="let serv of servicios | async">-->
                         <tr>
-                          <td align="center" id="textoTabla"> </td>
-                          <td align="center" id="textoTabla"> </td>
-                          <td align="center" id="textoTabla"> </td>
-                          <td align="center" id="textoTabla"> </td>
-                          <td align="center" id="textoTabla"> </td>
+                          <td align="center" id="textoTabla"> Código de servicio</td>
+                          <td align="center" id="textoTabla"> Código de servicio</td>
+                          <td align="center" id="textoTabla"> Código de servicio</td>
+                          <td align="center" id="textoTabla"> Código de servicio</td>
+                          <td align="center" id="textoTabla"> Código de servicio</td>
                           
-                          <td align="center" id="textoTabla"> </td>
-                          <td align="center" id="textoTabla"> </td>
-                          <td align="center" id="textoTabla"> </td>
-                          <td align="center" id="textoTabla"> </td>
-                          <td align="center" id="textoTabla"> </td>
+                          <td align="center" id="textoTabla"> Código de servicio</td>
+                          <td align="center" id="textoTabla"> Código de servicio</td>
+                          <td align="center" id="textoTabla"> Código de servicio</td>
+                          <td align="center" id="textoTabla"> Código de servicio</td>
+                          <td align="center" id="textoTabla"> Código de servicio</td>
 
-                          <td align="center" id="textoTabla"> </td>
-                          <td align="center" id="textoTabla"> </td>
-                          <td align="center" id="textoTabla"> </td>
-                          <td align="center" id="textoTabla"> </td>
+                          <td align="center" id="textoTabla"> Código de servicio</td>
+                          <td align="center" id="textoTabla"> Código de servicio</td>
+                          <td align="center" id="textoTabla"> Código de servicio</td>
+                          <td align="center" id="textoTabla"> Codigo de servicio</td>
                       </tr>
                   </table>
       </div>
