@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 //Material
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -24,6 +25,7 @@ import { ProductoComponent } from './administracion/producto/producto.component'
 import { ServicioComponent } from './administracion/servicio/servicio.component';
 import { TicketComponent } from './administracion/ticket/ticket.component';
 import { MenuBsComponent } from './administracion/menu-bs/menu-bs.component';
+import { LoginComponent } from './principal/login/login.component';
 
 @NgModule({
   declarations: [
@@ -39,9 +41,11 @@ import { MenuBsComponent } from './administracion/menu-bs/menu-bs.component';
     ProductoComponent,
     ServicioComponent,
     TicketComponent,
-    MenuBsComponent
+    MenuBsComponent,
+    LoginComponent
   ],
   imports: [
+    HttpClientModule,
     FormsModule,
     BrowserModule,
     AppRoutingModule,

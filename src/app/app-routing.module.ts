@@ -13,11 +13,13 @@ import { TicketComponent } from './administracion/ticket/ticket.component';
 
 //Componentes Principal
 import { InicioComponent } from './principal/inicio/inicio.component';
+import { LoginComponent } from './principal/login/login.component';
 
 const routes: Routes = [
   //Rutas Principal
   {path: 'inicio', component:InicioComponent},
-  
+  {path: 'login', component:LoginComponent},
+
   //Rutas Administración
   {path: 'administracion/inicio', component:BackstageComponent},
   {path: 'administracion/cliente', component:ClienteComponent},
