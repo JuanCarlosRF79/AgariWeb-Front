@@ -5,9 +5,11 @@
   
   <body>
    <!-- Encabezado -->
-<div id="encabezado">
-  <h1 align="center">Nota de servicio</h1>
-</div>
+   <br>
+    <div id="encabezado" class="text-center">
+      <p>Nota de servicio</p>
+    </div>
+  <br>
 
 <!-- Linea -->
 <div id="contenedor-linea">
@@ -25,13 +27,12 @@
   -->
 </div>
 
-<div id="contenedor-formulario">
-<form id="form" class="topBefore" action="Envio.php" method="post">
-  <div id="datos-filtro" align="center">
+<div class="container w-50" align="center">
+<form class="topBefore" action="Envio.php" method="post">
+  
     <div class="row justify-content-md-center mb-2">
-        <div class="col-md-3">
-          <div class="input-group">
-            <div class="input-group-prepend w-50">
+      <div class="input-group mb-auto">
+            <div class="input-group-prepend w-25">
               <span class="input-group-text bg-dark">Estado:</span>
             </div>
             <select class="form-select" name="esta" id="metodoPago" [(ngModel)]="filtroEst" [ngModelOptions]="{standalone: true}">
@@ -44,20 +45,16 @@
             </select>
           </div>
         </div>
-      </div>
       
       <div class="row justify-content-md-center mb-2">
-        <div class="col-md-3">
-          <div class="input-group">
-            <div class="input-group-prepend w-50">
+        <div class="input-group mb-auto">
+            <div class="input-group-prepend w-25">
               <span class="input-group-text bg-dark">Fecha de solicitud:</span>
             </div>
             <input class="form-control" id="filtrOrden" type="date" [(ngModel)]="filtroFech" [ngModelOptions]="{standalone: true}">
           </div>
         </div>
-      </div>
-  </div>
-  <div id="botones-filtro" class="container text-center">
+  <div id="botones-filtro" class="text-center">
     <div class="row justify-content-center">
         <div class="col-md-auto">
       <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
@@ -69,14 +66,52 @@
 </div>
 </div>
 </div>
-</form>
-<br>
 
-  <div id="contenedorTabla" class="container">
+</form>
+</div>
+<br>
+<div class="container" style="padding-left: 70px;">
+  <div class="row justify-content-md-center">
+    <div class="col-6">
+        <div class="container shadow p-2 mb-5 bg-white rounded">
+            <div class="row">
+                <div class="col-7">
+                    <h4>Servicio Completado</h4>
+                </div>
+                <div class="col-5" align="right">
+                    <a style="text-decoration:none;" routerLink="../servicio"><h6>Modificar</h6></a>
+                </div>
+                <div class="col-7">
+                    <i class='bx bxs-calendar'></i> 10/07/2023<br>
+                    <i class='bx bxs-error-circle'></i> Mi lavadora tira agua<br>
+                    <i class='bx bx-money'></i> $1,200.00
+                </div>
+                <div class="col-5" align="right">
+                    <i class='bx bxs-user'></i> Jose Lopéz <br>
+                    <i class='bx bxs-phone'></i> 3320452252 <br>
+                </div>
+                <div class="col-12">
+                    <hr style="background: rgb(11, 198, 245); height: 5px;">
+                </div>
+                <div class="col-12">
+                    <i class='bx bxs-city'></i> Zapopan 
+                </div>
+                <div class="col">
+                    <i class='bx bxs-directions'></i> Colonia, Calle 2030 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+
+  <!-- <div id="contenedorTabla" class="container-fluid" style="padding-left: 90px;">
     <div class="table-responsive">
       <table id="tabla" align="center" class="table talbe-striped table-bordered tabla-personalizada" >
       <thead class="thead-dark">
-          <tr id="tituloTabla" align="center">
+          <tr id="tituloTabla" align="center" class="table-dark">
               <th>Código de servicio</th>
               <th>Nombre del cliente</th>
               <th>Télefono del cliente</th>
@@ -89,7 +124,7 @@
           </tr>
           </thead>
           <tbody>
-                  <!--<tr *ngFor="let serv of filtrado">-->
+                  <!--<tr *ngFor="let serv of filtrado">
                   <tr>
                       <td align="center" id="textoTabla"> Código de servicio</td>
                       <td align="center" id="textoTabla"> Código de servicio </td>
@@ -104,15 +139,15 @@
                 </tbody>
               </table>
   </div>
-</div>
-</div>
+</div> -->
 
 
 
 <!-- Encabezado -->
-<div id="encabezado">
-  <h1 align="center">Consultar y modificar servicios</h1>
+<div id="encabezado" class="text-center">
+  <p>Modificar servicios</p>
 </div>
+<br><br>
 
 <!-- Linea -->
 <div id="contenedor-linea">
@@ -123,13 +158,13 @@
 
 
 <!-- Formulario -->
-<div class="container">
+<div class="container w-50">
   <form id="form" action="Envio.php" method="post">
     
-      <div id="datos-servicio" align="center" class="container w-50">
+      <div id="datos-servicio" align="center">
        <div class="row justify-content-md-center mb-2">
         <div class="input-group mb-auto">
-            <div class="input-group-prepend w-50">
+            <div class="input-group-prepend w-25">
                 <span class="input-group-text bg-dark">Código de servicio: </span>
                     </div>   
                       <input class="form-control"  id="idServicio"  placeholder="Código del servicio"  class="form-control" [(ngModel)]="servicio.codigoTick" [ngModelOptions]="{standalone: true}">
@@ -137,7 +172,7 @@
                 </div>
           <div class="row justify-content-md-center mb-2">
           <div class="input-group mb-auto">
-            <div class="input-group-prepend w-50">
+            <div class="input-group-prepend w-25">
               <span class="input-group-text bg-dark">Nombre: </span>
             </div>
             <input class="form-control" id="nombre_cli" maxlength="100" type="text" placeholder="Nombre del cliente" [(ngModel)]="servicio.nombreCli" [ngModelOptions]="{standalone: true}">
@@ -145,7 +180,7 @@
         </div>
         <div class="row justify-content-md-center mb-2">
           <div class="input-group mb-auto">
-            <div class="input-group-prepend w-50">
+            <div class="input-group-prepend w-25">
               <span class="input-group-text bg-dark">Apellido paterno: </span>
             </div>
             <input class="form-control" id="apellidoPat_cli" maxlength="100" type="text" placeholder="Apellido paterno del cliente" [(ngModel)]="servicio.apellidoPatCli" [ngModelOptions]="{standalone: true}">
@@ -153,7 +188,7 @@
         </div>
         <div class="row justify-content-md-center mb-2">
           <div class="input-group mb-auto">
-            <div class="input-group-prepend w-50">
+            <div class="input-group-prepend w-25">
               <span class="input-group-text bg-dark">Teléfono: </span>
             </div>
             <input class="form-control" id="telefono_cli" maxlength="100" type="text" placeholder="Teléfono para contactar al cliente" [(ngModel)]="servicio.telefono" [ngModelOptions]="{standalone: true}">
@@ -161,7 +196,7 @@
         </div>
         <div class="row justify-content-md-center mb-2">
           <div class="input-group mb-auto">
-            <div class="input-group-prepend w-50">
+            <div class="input-group-prepend w-25">
               <span class="input-group-text bg-dark">Nombre: </span>
             </div>
             <input class="form-control" id="nombre_emp" maxlength="100" type="text" placeholder="Nombre del empleado" [(ngModel)]="servicio.nombreEmp" [ngModelOptions]="{standalone: true}">
@@ -169,7 +204,7 @@
         </div>
         <div class="row justify-content-md-center mb-2">
           <div class="input-group mb-auto">
-            <div class="input-group-prepend w-50">
+            <div class="input-group-prepend w-25">
               <span class="input-group-text bg-dark">Apellido paterno: </span>
             </div>
             <input class="form-control" id="apellidoPat_emp" maxlength="100" type="text" placeholder="Apellido del empleado" [(ngModel)]="servicio.apellidoPatEmp" [ngModelOptions]="{standalone: true}">
@@ -177,7 +212,7 @@
         </div>
         <div class="row justify-content-md-center mb-2">
           <div class="input-group mb-auto">
-            <div class="input-group-prepend w-50">
+            <div class="input-group-prepend w-25">
               <span class="input-group-text bg-dark">Dirección calle: </span>
             </div>
             <input class="form-control" id="direccionCalle" maxlength="255" type="text" placeholder="Dirección calle del cliente" [(ngModel)]="servicio.calle" [ngModelOptions]="{standalone: true}">
@@ -185,7 +220,7 @@
         </div>
         <div class="row justify-content-md-center mb-2">
           <div class="input-group mb-auto">
-            <div class="input-group-prepend w-50">
+            <div class="input-group-prepend w-25">
               <span class="input-group-text bg-dark">Dirección colonia: </span>
             </div>
             <input class="form-control" id="direccionColonia" maxlength="255" type="text" placeholder="Dirección colonia del cliente" [(ngModel)]="servicio.colonia" [ngModelOptions]="{standalone: true}">
@@ -193,31 +228,31 @@
         </div>
         <div class="row justify-content-md-center mb-2">
           <div class="input-group mb-auto">
-            <div class="input-group-prepend w-50">
+            <div class="input-group-prepend w-auto">
               <span class="input-group-text bg-dark">Descripción de la vivienda: </span>
             </div>
-            <textarea class="form-control" id="descripcionDireccion" maxlength="255" type="text" placeholder="Descripción de la vivienda del cliente" [(ngModel)]="servicio.descViv" [ngModelOptions]="{standalone: true}"></textarea>
+            <textarea class="form-control" id="descripcionDireccion" style="height: 20px;" maxlength="255" type="text" placeholder="Descripción de la vivienda del cliente" [(ngModel)]="servicio.descViv" [ngModelOptions]="{standalone: true}"></textarea>
           </div>
         </div>
         <div class="row justify-content-md-center mb-2">
           <div class="input-group mb-auto">
-            <div class="input-group-prepend w-50">
+            <div class="input-group-prepend w-auto">
               <span class="input-group-text bg-dark">Descripción del problema: </span>
             </div>
-            <textarea class="form-control" id="descripcionProblema" type="text" placeholder="Descripción del problema que tiene el cliente" [(ngModel)]="servicio.descProb" [ngModelOptions]="{standalone: true}"></textarea>
+            <textarea class="form-control" style="height: 20px;" type="text" placeholder="Descripción del problema que tiene el cliente" [(ngModel)]="servicio.descProb" [ngModelOptions]="{standalone: true}"></textarea>
           </div>
         </div>
         <div class="row justify-content-md-center mb-2">
           <div class="input-group mb-auto">
-            <div class="input-group-prepend w-50">
+            <div class="input-group-prepend w-25">
               <span class="input-group-text bg-dark">Costo total: </span>
             </div>
-            <input class="form-control" id="pagoServicio" maxlength="9" type="number" placeholder="Coste del servicio (Puede variar después de una visita)" [(ngModel)]="servicio.costoTotal" [ngModelOptions]="{standalone: true}">
+            <input class="form-control" min="0" id="pagoServicio" maxlength="9" type="number" placeholder="Coste del servicio (Puede variar después de una visita)" [(ngModel)]="servicio.costoTotal" [ngModelOptions]="{standalone: true}">
           </div>
         </div>
         <div class="row justify-content-md-center mb-2">
           <div class="input-group mb-auto">
-            <div class="input-group-prepend w-50">
+            <div class="input-group-prepend w-auto">
               <span class="input-group-text bg-dark">Fecha de la solicitud: </span>
             </div>
             <input class="form-control" id="fechaOrden" type="date" [(ngModel)]="servicio.fechaSol" [ngModelOptions]="{standalone: true}">
@@ -225,32 +260,26 @@
         </div>
         <div class="row justify-content-md-center mb-2">
           <div class="input-group mb-auto">
-            <div class="input-group-prepend w-50">
-              <span class="input-group-text bg-dark">Fecha estimada de finalización: </span>
+            <div class="input-group-prepend w-auto">
+              <span class="input-group-text bg-dark">Fecha de finalización: </span>
             </div>
             <input class="form-control" id="fechaFinalizado" type="date" [(ngModel)]="servicio.fechaFin" [ngModelOptions]="{standalone: true}">
           </div>
         </div>
         <div class="row justify-content-md-center mb-2">
           <div class="input-group mb-auto">
-            <div class="input-group-prepend w-50">
+            <div class="input-group-prepend w-25">
               <span class="input-group-text bg-dark">Estado: </span>
+            </div>      
+                  <select name="estado" class="form-select"  id="estado"[(ngModel)]="servicio.estado" [ngModelOptions]="{standalone: true}">
+                    <option id="select-opt" value="" selected>Seleccione uno</option>
+                    <option id="select-opt"  value="Sin revisar">Sin revisar</option>
+                    <option id="select-opt"  value="En proceso">En proceso</option>
+                    <option id="select-opt"  value="Completado">Completado</option>
+                    <option id="select-opt"  value="Cancelado">Cancelado</option>
+                    <option id="select-opt"  value="Por contactar">Por contactar</option>
+                  </select>              
             </div>
-            <tr>
-                      <td>
-                        
-                          <select name="estado" class="form-select"  id="estado"[(ngModel)]="servicio.estado" [ngModelOptions]="{standalone: true}">
-                                          <option id="select-opt" value="" selected>Seleccione uno</option>
-                                          <option id="select-opt"  value="Sin revisar">Sin revisar</option>
-                                          <option id="select-opt"  value="En proceso">En proceso</option>
-                                          <option id="select-opt"  value="Completado">Completado</option>
-                                          <option id="select-opt"  value="Cancelado">Cancelado</option>
-                                          <option id="select-opt"  value="Por contactar">Por contactar</option>
-                          </select>
-                      </td>
-                  </tr>
-              
-      </div>
       <br>
       <br>
       
@@ -292,52 +321,53 @@
         </div>
       </div>
   </form>
-  <div id="contenedorTabla">
-    <div class="table-responsive">
-      <table id="tabla" align="center" class="table talbe-striped table-bordered table-sm" >
-      <thead class="thead-dark">
-          <tr id="tituloTabla" align="center" class="table-dark">
-                  <th>Código de servicio</th>
-                  <th>Nombre del cliente</th>
-                  <th>Apellido paterno del cliente</th>
-                  <th>Télefono del cliente</th>
-                  <th>Metodo de pago</th>
-                  <th>Calle</th>
-                  <th>Colonia</th>
-                  <th>Desc. Vivienda</th>
-                  <th>Desc. Problema</th>
-                  <th>Costo total</th>
-                  <th>Nombre del empleado</th>
-                  <th>Apellido paterno del empleado</th>
-                  <th>Fecha de solicitud</th>
-                  <th>Estado</th>
-              </tr>
-            </thead>
-            <tbody>
-                      <!--<tr *ngFor="let serv of servicios | async">-->
-                        <tr>
-                          <td align="center" id="textoTabla"> Código de servicio</td>
-                          <td align="center" id="textoTabla"> Código de servicio</td>
-                          <td align="center" id="textoTabla"> Código de servicio</td>
-                          <td align="center" id="textoTabla"> Código de servicio</td>
-                          <td align="center" id="textoTabla"> Código de servicio</td>
-                          
-                          <td align="center" id="textoTabla"> Código de servicio</td>
-                          <td align="center" id="textoTabla"> Código de servicio</td>
-                          <td align="center" id="textoTabla"> Código de servicio</td>
-                          <td align="center" id="textoTabla"> Código de servicio</td>
-                          <td align="center" id="textoTabla"> Código de servicio</td>
-
-                          <td align="center" id="textoTabla"> Código de servicio</td>
-                          <td align="center" id="textoTabla"> Código de servicio</td>
-                          <td align="center" id="textoTabla"> Código de servicio</td>
-                          <td align="center" id="textoTabla"> Codigo de servicio</td>
-                      </tr>
-                    </tbody>
-                  </table>
-      </div>
-  </div>
 </div>
+<div class="container-fluid" style="padding-left: 90px;">
+  <div class="table-responsive">
+    <table id="tabla" class="table talbe-striped table-bordered table-sm" >
+    <thead class="thead-dark">
+        <tr id="tituloTabla" align="center" class="table-dark">
+                <th>Código de servicio</th>
+                <th>Nombre del cliente</th>
+                <th>Apellido paterno del cliente</th>
+                <th>Télefono del cliente</th>
+                <th>Metodo de pago</th>
+                <th>Calle</th>
+                <th>Colonia</th>
+                <th>Desc. Vivienda</th>
+                <th>Desc. Problema</th>
+                <th>Costo total</th>
+                <th>Nombre del empleado</th>
+                <th>Apellido paterno del empleado</th>
+                <th>Fecha de solicitud</th>
+                <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+                    <!--<tr *ngFor="let serv of servicios | async">-->
+                      <tr>
+                        <td align="center" id="textoTabla"> Código de servicio</td>
+                        <td align="center" id="textoTabla"> Código de servicio</td>
+                        <td align="center" id="textoTabla"> Código de servicio</td>
+                        <td align="center" id="textoTabla"> Código de servicio</td>
+                        <td align="center" id="textoTabla"> Código de servicio</td>
+                        
+                        <td align="center" id="textoTabla"> Código de servicio</td>
+                        <td align="center" id="textoTabla"> Código de servicio</td>
+                        <td align="center" id="textoTabla"> Código de servicio</td>
+                        <td align="center" id="textoTabla"> Código de servicio</td>
+                        <td align="center" id="textoTabla"> Código de servicio</td>
+
+                        <td align="center" id="textoTabla"> Código de servicio</td>
+                        <td align="center" id="textoTabla"> Código de servicio</td>
+                        <td align="center" id="textoTabla"> Código de servicio</td>
+                        <td align="center" id="textoTabla"> Codigo de servicio</td>
+                    </tr>
+                  </tbody>
+                </table>
+    </div>
+</div>
+
   </body>
   
   

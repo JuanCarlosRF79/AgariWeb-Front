@@ -75,7 +75,7 @@
           </div>
           <div class="row justify-content-md-center mb-2">
             <div class="input-group mb-auto">
-              <div class="input-group-prepend w-25">
+              <div class="input-group-prepend w-auto">
                 <span class="input-group-text bg-dark">Fecha de nacimiento: </span>
               </div>
               <input class="form-control" id="fechaNac" type="date" [(ngModel)]="empleado.fechaNac" [ngModelOptions]="{standalone: true}">
@@ -91,7 +91,7 @@
           </div>
           <div class="row justify-content-md-center mb-2">
             <div class="input-group mb-auto">
-              <div class="input-group-prepend w-25">
+              <div class="input-group-prepend w-auto">
                 <span class="input-group-text bg-dark">Ingreso a la empresa: </span>
               </div>
               <input class="form-control" id="ingresoEmpre" type="date" [(ngModel)]="empleado.ingresoEmpresa" [ngModelOptions]="{standalone: true}">
@@ -147,7 +147,7 @@
           </div>
           <div class="row justify-content-md-center mb-2">
             <div class="input-group mb-auto">
-              <div class="input-group-prepend w-25">
+              <div class="input-group-prepend w-auto">
                 <span class="input-group-text bg-dark">Estado del empleado: </span>
               </div>
               <select name="estado" id="estado" class="form-select" [(ngModel)]="empleado.estado" [ngModelOptions]="{standalone: true}">
