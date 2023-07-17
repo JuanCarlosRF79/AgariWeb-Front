@@ -1,15 +1,24 @@
-<div class="login-page">
-    <h1>Iniciar Sesión</h1>
+<html>
+
+<head>
+  <link rel="stylesheet" href="login.component.css">
+</head>
+
+<body>
+  <div class="login-page">
+    
     <div class="form">
       <span>
         <img src="./assets/img/logo/agariDibujo.png" class="logo">
-    </span>
-    <br><br>
-       <form method="post">
-          <input type="email" [(ngModel)]="usuario.correo" [ngModelOptions]="{standalone: true}" id="inputEmail" class="form-control" placeholder="Correo Electronico" required="" autofocus="">
-              <input type="password" [(ngModel)]="usuario.password" [ngModelOptions]="{standalone: true}" id="inputPassword" class="form-control" placeholder="Contraseña" required="">
-      <button class="btn btn-success btn-block" type="submit" (click)="login()"><i class="fas fa-sign-in-alt"></i> Inicia Sesión</button>
-   
+      </span>
+      <br><br>
+      <h1>Iniciar Sesión</h1>
+      <br>
+      <form method="post">
+        <input type="email" [(ngModel)]="usuario.correo" [ngModelOptions]="{standalone: true}" id="inputEmail" class="form-control" placeholder="Correo Electrónico" required="" autofocus="">
+        <input type="password" [(ngModel)]="usuario.password" [ngModelOptions]="{standalone: true}" id="inputPassword" class="form-control" placeholder="Contraseña" required="">
+        <button class="btn btn-success btn-block" type="submit" (click)="login()"><i class="fas fa-sign-in-alt"></i> Ingresar</button>
       </form>
     </div>
   </div>
+</body>
