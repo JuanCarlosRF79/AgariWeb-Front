@@ -269,12 +269,11 @@
               <span class="input-group-text bg-dark">Estado: </span>
             </div>      
                   <select name="estado" class="form-select"  id="estado"[(ngModel)]="servicio.estado" [ngModelOptions]="{standalone: true}">
-                    <option id="select-opt" value="" selected>Seleccione uno</option>
-                    <option id="select-opt"  value="Sin revisar">Sin revisar</option>
-                    <option id="select-opt"  value="En proceso">En proceso</option>
-                    <option id="select-opt"  value="Completado">Completado</option>
-                    <option id="select-opt"  value="Cancelado">Cancelado</option>
-                    <option id="select-opt"  value="Por contactar">Por contactar</option>
+                    <option value="" selected>Seleccione uno</option>
+                    <option value="Solicitado">Solicitado</option>
+                    <option value="En proceso">En proceso</option>
+                    <option value="Cancelado">Cancelado</option>
+                    <option value="Completado">Completado</option>
                   </select>              
             </div>
       <br>
