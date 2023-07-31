@@ -14,24 +14,24 @@ export class ServicioService {
     return this.http.get<any>(this.url+"/inicio");
   }
 
-  consultarTodoServ(servicio:any){
-    return this.http.get<any>(this.url+"/");
-  }
-
   consultarServ(servicio:object){
     return this.http.post<any>(this.url+"/buscar",servicio);
   }
 
   insertarServ(servicio:object){
-    return this.http.post<any>(this.url,servicio);
+    return this.http.post<any>(this.url+"/insertar",servicio);
   }
 
   modificarServ(servicio:object){
     return this.http.put<any>(this.url,servicio);
   }
 
+  confirmarServ(servicio:object){
+    return this.http.put<any>(this.url+"/confirmar",servicio)
+  }
+
   eliminarServ(servicio:object){
-    return this.http.post<any>(this.url+"/borrar",servicio);
+    return this.http.post<any>(this.url+"/cancelar",servicio);
   }
 
   todoServ(){
