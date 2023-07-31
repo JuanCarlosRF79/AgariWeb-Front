@@ -174,7 +174,7 @@
                     <h4>Servicio {{ serv.estadoServicio }} #{{ serv.idServicio }}</h4>
                 </div>
                 <div class="col-5" align="right">
-                    <a style="text-decoration:none;" routerLink="../servicio"><h6 (click)="buscarServ(serv.idServicio)" > Modificar </h6></a>
+                    <a style="text-decoration:none;" routerLink="../servicio"><h6 (click)="buscarServ(serv.idServicio)" > Modificar <i class='bx bxs-edit-alt'></i></h6></a>
                 </div>
                 <div class="col-7">
                   <div *ngIf="serv.estadoServicio=='Solicitado'" ><i class='bx bxs-calendar'></i> {{ formatoFecha(serv.fechaOrden) }} </div>
