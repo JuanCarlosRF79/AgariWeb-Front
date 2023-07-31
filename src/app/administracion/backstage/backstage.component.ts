@@ -21,7 +21,7 @@ export class BackstageComponent implements OnInit {
     this.servicioSev.consultarServInicio().subscribe(
       (res)=>{
         this.servicios=res;
-        console.log(this.servicios);
+        //console.log(this.servicios);
       },(err)=>{
         console.log(err);
       }
@@ -32,6 +32,19 @@ export class BackstageComponent implements OnInit {
   var date = (dates);
   var currentDate = date.slice(0, 10);
   return currentDate;
+  }
+
+  formatoCosto(costo:any){
+    return costo.toLocaleString('en-US')
+  }
+
+  masInformacion(codigo:any){
+    this.servicioSev.setIdServicio(codigo)
+  }
+
+  formatoTelefono(telefono:any){
+    var apoyo = telefono.slice(0,2)+" "+telefono.slice(2,6)+" "+telefono.slice(6,10)
+    return apoyo
   }
 
 }

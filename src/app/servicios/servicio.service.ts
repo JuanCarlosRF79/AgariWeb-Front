@@ -7,8 +7,21 @@ import { HttpClient } from '@angular/common/http';
 export class ServicioService {
 
   private url="http://localhost:3000/servicio";
+  private idServicio:any;
 
   constructor(private http:HttpClient) { }
+
+  setIdServicio(codigoServ:any){
+    this.idServicio=codigoServ
+  }
+
+  getIdServicio(){
+    if(this.idServicio!=null){
+      return this.idServicio  
+    }else{
+      return null
+    }
+  }
 
   consultarServInicio(){
     return this.http.get<any>(this.url+"/inicio");

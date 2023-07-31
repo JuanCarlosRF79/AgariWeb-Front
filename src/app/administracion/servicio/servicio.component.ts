@@ -16,6 +16,10 @@ export class ServicioComponent {
     ngOnInit(): void {
       this.consultarClientes()
       this.todoServ()
+      if(this.servicioSev.getIdServicio()!=null){
+        this.servicio.idServicio=this.servicioSev.getIdServicio()
+        this.consultarServ()
+      }
     }
 
   municipios=[

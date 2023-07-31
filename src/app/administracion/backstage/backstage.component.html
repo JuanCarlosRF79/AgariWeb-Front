@@ -7,39 +7,9 @@
         <h1 align="center">¡Bienvenid@!</h1>
         <br><br>
         <div class="container">
-            <!-- <div class="row">
-                <div class="col">
-                    <h3 align="center">Pedidos pendientes</h3>
-                </div>
-            </div>
-            <div class="row justify-content-md-center">
-                <div class="col-6">
-                    <div class="container shadow p-2 mb-5 bg-white rounded">
-                        <div class="row">
-                            <div class="col-7">
-                                <h4>Pedido</h4>
-                            </div>
-                            <div class="col-5">
-                                <a style="text-decoration:none;" routerLink="../envio"><h6>Más información</h6></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="container shadow p-2 mb-5 bg-white rounded">
-                        <h1>Pedido</h1>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="container shadow p-2 mb-5 bg-white rounded">
-                        <h1>Pedido</h1>
-                    </div>
-                </div>
-            </div> -->
-
             <div class="row">
                 <div class="col">
-                    <h3 align="center">Servicios pendientes</h3>
+                    <h3 align="center">Servicios para hoy</h3>
                     <br>
                 </div>
             </div>
@@ -51,16 +21,16 @@
                                 <h4>Servicio {{serv.estadoServicio}}</h4>
                             </div>
                             <div class="col-5" align="right">
-                                <a style="text-decoration:none;" routerLink="../servicio"><h6>Más información</h6></a>
+                                <a style="text-decoration:none;" (click)="masInformacion(serv.idServicio)" routerLink="../servicio" ><h6>Más información</h6></a>
                             </div>
                             <div class="col-7">
                                 <i class='bx bxs-calendar'></i> {{formatoFecha(serv.fechaOrden)}} <br>
-                                <i class='bx bxs-error-circle'></i> {{serv.descripcionProblema}} <br>
-                                <i class='bx bx-money'></i> {{"$ "+serv.pagoServicio}}.00
+                                <i class='bx bxs-error-circle'></i> {{ serv.descripcionProblema}} <br>
+                                <i class='bx bx-money'></i> {{"$ "+ formatoCosto(serv.pagoServicio)}}
                             </div>
                             <div class="col-5" align="right">
                                 <i class='bx bxs-user'></i> {{serv.nombre_cli+" "+serv.apellidoPat_cli}} <br>
-                                <i class='bx bxs-phone'></i> {{serv.telefono}} <br>
+                                <i class='bx bxs-phone'></i> {{ formatoTelefono(serv.telefono)}} <br>
                             </div>
                             <div class="col-12">
                                 <hr style="background: rgb(11, 198, 245); height: 5px;">
