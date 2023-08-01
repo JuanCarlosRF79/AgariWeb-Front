@@ -16,9 +16,18 @@
           <div class="row justify-content-md-center mb-2">
             <div class="input-group mb-auto">
               <div class="input-group-prepend w-25">
+                <span class="input-group-text bg-dark">Código producto: </span>
+              </div>
+              <input id="nombre" maxlenght="100" class="form-control" type="text" placeholder="Código del Producto" [(ngModel)]="producto.idProducto" [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>
+
+          <div class="row justify-content-md-center mb-2">
+            <div class="input-group mb-auto">
+              <div class="input-group-prepend w-25">
                 <span class="input-group-text bg-dark">Nombre: </span>
               </div>
-              <input id="nombre" maxlenght="100" class="form-control" type="text" placeholder="Nombre del Producto" [(ngModel)]="producto.nombreProd" [ngModelOptions]="{standalone: true}">
+              <input id="nombre" maxlenght="100" class="form-control" type="text" placeholder="Nombre del Producto" [(ngModel)]="producto.nombre" [ngModelOptions]="{standalone: true}">
             </div>
           </div>
   
@@ -121,9 +130,9 @@
               <div class="col-md-auto">
                 <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                   <div class="btn-group me-2" role="group" aria-label="First group">
-                    <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" value="Guardar">
+                    <input id="submit" type="button" name="btn-operacion" class="btn btn-primary"  value="Guardar">
                     <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" value="Modificar">
-                    <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" value="Buscar">
+                    <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" (click)="buscarProd()" value="Buscar">
                     <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" value="Eliminar">
                     <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" value="Mostrar todo">
                     <input id="submit" type="submit" name="btn-operacion" class="btn btn-primary" value="Limpiar">

@@ -18,7 +18,8 @@ export class ProductoComponent {
   productos:any
 
   producto={
-    nombreProd: "",
+    idProducto:"",
+    nombre: "",
     descripcionProd: "",
     costoIndividual: "",
     marca: "",
@@ -35,6 +36,18 @@ export class ProductoComponent {
       (res)=>{
         this.productos=res
         console.log(this.productos)
+      },
+      (err)=>{
+        console.log(err)
+      }
+    )
+  }
+
+  buscarProd(){
+    this.productoServ.consultarProd(this.producto).subscribe(
+      (res)=>{
+        console.log(res[0])
+        this.producto=res[0]
       },
       (err)=>{
         console.log(err)
