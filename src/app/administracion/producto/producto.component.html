@@ -109,7 +109,7 @@
             <div class="input-group mb-auto">
               <div class="input-group-prepend w-25">
               </div>
-              <img *ngIf="producto.imgurl != ''; else esvacio" src="{{ producto.imgurl }}" alt="" width="350px" height="250px">
+              <img *ngIf="producto.img != ''; else esvacio" src="{{ producto.img }}" alt="" width="350px" height="250px">
               <ng-template #esvacio>
                 <img src="https://www.lg.com/mx/images/lavadoras-y-secadoras/md07547461/Gallery/D_11.jpg" alt="" width="350px" height="250px">
               </ng-template>
@@ -138,30 +138,32 @@
       <br>
     </div>
 
-    <div class="container" style="padding-left: 70px;">
-      <div class="row justify-content-md-center">
-        <div class="col-6">
+    <div class="container" style="padding-left: 70px; padding-bottom: 20px;">
+      <div class="row justify-content-md-center" style="overflow-y: auto;
+      height: 500px;">
+      <div class="col-6" *ngFor="let prod of productos">
             <div class="container shadow p-2 mb-5 bg-white rounded">
                 <div class="row">
-                    <div class="col-7">
-                        <h4>Motor para lavadora Mabe #1</h4>
+                    <div class="col-9">
+                        <h4>{{prod.nombre}} #{{prod.idProducto}}</h4>
                     </div>
-                    <div class="col-5" align="right">
+                    <div class="col-3" align="right">
                         <a style="text-decoration:none;" routerLink="../servicio"><h6>Modificar <i class='bx bxs-edit-alt'></i></h6></a>
                     </div>
                     <div class="col-12">
-                      <p><i class='bx bxs-info-circle'></i> Motor para lavadoras Mabe del año 2010, modelo 2435B</p>
+                      <p><i class='bx bxs-info-circle'></i> {{prod.descripcionProd}} </p>
                       <hr style="background: rgb(11, 198, 245); height: 5px;">
                     </div>
                     <div class="col-4">
-                      <img src="https://www.lg.com/mx/images/lavadoras-y-secadoras/md07547461/Gallery/D_11.jpg" width="auto" height="150px">
+                       <div *ngIf="prod.img==null"><img src="https://www.lg.com/mx/images/lavadoras-y-secadoras/md07547461/Gallery/D_11.jpg" width="auto" height="150px"></div>
+                       <div *ngIf="prod.img!=null"><img src="data:image/png;base64, {{prod.img}}" width="auto" height="150px"></div>
                     </div>
                     <div class="col" align="right">
-                      $1,500.00 <i class='bx bxs-badge-dollar'></i><br>
-                      10 <i class='bx bxs-component'></i><br>
-                      Mabe <i class='bx bxs-registered'></i><br>
-                      Semi-nuevo <i class='bx bxs-star'></i><br><br>
-                      <h5>Existente</h5> 
+                      ${{ prod.costoIndividual }} <i class='bx bxs-badge-dollar'></i><br>
+                      {{prod.stock}} <i class='bx bxs-component'></i><br>
+                      {{prod.marca}} <i class='bx bxs-registered'></i><br>
+                      {{ prod.condicion }} <i class='bx bxs-star'></i><br><br>
+                      <h5> {{ prod.estado }} </h5> 
                     </div>
                 </div>
             </div>
