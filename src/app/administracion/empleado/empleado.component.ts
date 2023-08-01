@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { EmpleadoService } from 'src/app/servicios/empleado.service';
 
 @Component({
   selector: 'app-empleado',
@@ -7,7 +9,8 @@ import { Component } from '@angular/core';
 })
 export class EmpleadoComponent {
   empleado={
-    nombreEmp: "",
+    idEmpleado: "",
+    nombre_emp: "",
     apellidoPatEmp: "",
     apellidoMatEmp: "",
     puesto: "",
@@ -25,4 +28,37 @@ export class EmpleadoComponent {
     tipo: "Empleado",
     estado: "Activo"
   }
+
+  constructor(private empleadoServ:EmpleadoService, private snackBar:MatSnackBar) {}
+
+  ngOnInit():void{
+    this.todoEmp()
+  }
+
+  todoEmp(){
+    this.empleadoServ.todoEmp().subscribe(
+      (res)=>{
+
+        this.empleado=res[0]
+        console.log(this.empleado)
+      },
+      (err)=>{
+        console.log(err)
+      }
+    )
+  }
+
+
+  buscarEmp() {
+    this.empleadoServ.consultarEmp(this.empleado).subscribe(
+      (res) => {
+        console.log(res);
+        this.empleado = res;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
 }
+
