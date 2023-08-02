@@ -10,13 +10,22 @@
         <br>
             <form id="form" class="topBefore" method="post">
                 <div id="datos-cliente" class="container w-50" align="center">
+
+                    <div class="row justify-content-md-center mb-2">
+                        <div class="input-group mb-auto">
+                            <div class="input-group-prepend w-25">
+                                <span class="input-group-text bg-dark">Código cliente: </span>
+                            </div>
+                            <input class="form-control" min="1" type="number" placeholder="Código del cliente"  [(ngModel)]="cliente.idCliente" [ngModelOptions]="{standalone: true}">
+                        </div>
+                    </div>
                     
                     <div class="row justify-content-md-center mb-2">
                         <div class="input-group mb-auto">
                             <div class="input-group-prepend w-25">
                                 <span class="input-group-text bg-dark">Nombre: </span>
                             </div>
-                            <input class="form-control" maxlenght="100" type="text" placeholder="Nombre del cliente"  [(ngModel)]="cliente.nombreCli" [ngModelOptions]="{standalone: true}">
+                            <input class="form-control" maxlenght="100" type="text" placeholder="Nombre del cliente"  [(ngModel)]="cliente.nombre_cli" [ngModelOptions]="{standalone: true}">
                         </div>
                     </div>
                     
@@ -25,8 +34,8 @@
                             <div class="input-group-prepend w-25">
                                 <span class="input-group-text bg-dark">Apellidos: </span>
                             </div>
-                            <input id="apellido" maxlenght="100" class="form-control" type="text" placeholder="Apellido paterno del cliente" [(ngModel)]="cliente.apellidoPatCli" [ngModelOptions]="{standalone: true}">
-                            <input id="apellidoMat_cli" class="form-control" maxlenght="100" type="text" placeholder="Apellido materno del cliente" [(ngModel)]="cliente.apellidoMatCli" [ngModelOptions]="{standalone: true}">
+                            <input id="apellido" maxlenght="100" class="form-control" type="text" placeholder="Apellido paterno del cliente" [(ngModel)]="cliente.apellidoPat_cli" [ngModelOptions]="{standalone: true}">
+                            <input id="apellidoMat_cli" class="form-control" maxlenght="100" type="text" placeholder="Apellido materno del cliente" [(ngModel)]="cliente.apellidoMat_cli" [ngModelOptions]="{standalone: true}">
                         </div>
                     </div>
 
@@ -45,19 +54,29 @@
                             
                     <div class="row justify-content-md-center mb-2">
                         <div class="input-group mb-auto">
-                            <div class="input-group-prepend w-auto">
-                                <span class="input-group-text bg-dark">Fecha de nacimiento: </span>
+                            <div class="input-group-prepend w-25">
+                                <span class="input-group-text bg-dark">Fecha nacimiento: </span>
                             </div>
                             <input class="form-control" id="fechaNac" type="date" [(ngModel)]="cliente.fechaNac" [ngModelOptions]="{standalone: true}" >
                         </div>
                     </div>
+
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend w-25">
+                          <span class="input-group-text bg-dark">Municipio/ciudad :</span>
+                        </div>
+                        <select class="form-select" [(ngModel)]="cliente.ciudad" [ngModelOptions]="{standalone: true}">
+                          <option value="" selected>Seleccionar municipio</option>
+                          <option *ngFor="let mun of municipios" value="{{mun}}" selected>{{mun}}</option>
+                        </select>
+                      </div>
                 
                     <div class="row justify-content-md-center mb-2">
                         <div class="input-group mb-auto">
                             <div class="input-group-prepend w-25">
                                 <span class="input-group-text bg-dark">Dirección calle:</span>
                             </div>
-                            <input class="form-control" id="direccionCalle" maxlenght="255" type="text" placeholder="Dirección calle del cliente" [(ngModel)]="cliente.direccionCalle" [ngModelOptions]="{standalone: true}" >
+                            <input class="form-control" id="direccionCalle" maxlenght="255" type="text" placeholder="Dirección calle del cliente" [(ngModel)]="cliente.calle" [ngModelOptions]="{standalone: true}" >
                         </div>
                     </div>
                
@@ -66,7 +85,7 @@
                             <div class="input-group-prepend w-25">
                                 <span class="input-group-text bg-dark">Dirección colonia:</span>
                             </div>
-                        <input class="form-control" id="direccionColonia" maxlenght="255" type="text" placeholder="Dirección colonia del cliente" [(ngModel)]="cliente.direccionColonia" [ngModelOptions]="{standalone: true}" >
+                        <input class="form-control" id="direccionColonia" maxlenght="255" type="text" placeholder="Dirección colonia del cliente" [(ngModel)]="cliente.colonia" [ngModelOptions]="{standalone: true}" >
                         </div>
                     </div>
             
@@ -93,7 +112,7 @@
                             <div class="input-group-prepend w-25">
                                 <span class="input-group-text bg-dark">Email:</span>
                             </div>
-                            <input class="form-control" id="email" type="email" placeholder="Correo electrónico del cliente" [(ngModel)]="cliente.correo" [ngModelOptions]="{standalone: true}" >
+                            <input class="form-control" id="email" type="email" placeholder="Correo electrónico del cliente" [(ngModel)]="cliente.email" [ngModelOptions]="{standalone: true}" >
                         </div>
                     </div>
                 
@@ -102,7 +121,7 @@
                             <div class="input-group-prepend w-25">
                                 <span class="input-group-text bg-dark">Contraseña:</span>
                             </div>  
-                        <input class="form-control" type="password" placeholder="Contraseña de la cuenta del cliente" [(ngModel)]="cliente.password" [ngModelOptions]="{standalone: true}" >
+                        <input class="form-control" type="password" placeholder="Contraseña de la cuenta del cliente" [(ngModel)]="cliente.contrasenia" [ngModelOptions]="{standalone: true}" >
                         </div>
                     </div>
                   
@@ -112,7 +131,7 @@
                                 <span class="input-group-text bg-dark">Estado:</span>
                             </div>   
                             <select class="form-select" name="estado" id="estado" [(ngModel)]="cliente.estado" [ngModelOptions]="{standalone: true}" >
-                                <option id="select-opt" value="" selected >Seleccione uno</option>
+                                <option id="select-opt" value="">Seleccione uno</option>
                                 <option id="select-opt"  value="Activo">Activo</option>
                                 <option id="select-opt"  value="De baja">Baja</option>
                             </select>
@@ -125,12 +144,11 @@
                           <div class="col-md-auto">
                         <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                             <div class="btn-group me-2" role="group" aria-label="First group">
-                                <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" value="Guardar">
-                                <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" value="Modificar">
-                                <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" value="Buscar">
-                                <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" value="Eliminar">
-                                <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" value="Mostrar todo">
-                                <input id="submit" type="submit" name="btn-operacion" class="btn btn-primary" value="Limpiar" >
+                                <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" (click)="insertarCli()" value="Guardar">
+                                <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" (click)="modificarCli()" value="Modificar">
+                                <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" (click)="buscarCli()" value="Buscar">
+                                <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" (click)="eliminarCli()" value="Eliminar">
+                                <input id="submit" type="submit" name="btn-operacion" class="btn btn-primary" (click)="limpiar()" value="Limpiar" >
                             </div>
                         </div>
                     </div>
@@ -147,34 +165,37 @@
                 </div>
                 <br><br>
 
-                <div class="container" style="padding-left: 70px;">
-                    <div class="row justify-content-md-center">
-                      <div class="col-6">
+                <div class="container" style="padding-left: 70px; padding-bottom: 20px;">
+                    <div class="row justify-content-md-center" style="overflow-y: auto;
+                    height: 500px;">
+                      <div class="col-6" *ngFor="let cli of clientes ">
                           <div class="container shadow p-2 mb-5 bg-white rounded">
                               <div class="row">
                                   <div class="col-7">
-                                      <h4>Jose Gómez Pérez #1</h4>
+                                      <div *ngIf="cli.estado=='Activo'" ><h4>{{cli.nombre_cli}} {{cli.apellidoPat_cli}} #{{cli.idCliente}}</h4></div>
+                                      <div *ngIf="cli.estado=='De baja'"><h4 style="color: rgb(172, 7, 7);">{{cli.nombre_cli}} {{cli.apellidoPat_cli}} #{{cli.idCliente}}</h4></div>
                                   </div>
                                   <div class="col-5" align="right">
-                                      <a style="text-decoration:none;" routerLink="../servicio"><h6>Modificar <i class='bx bxs-edit-alt'></i></h6></a>
+                                      <a style="text-decoration:none;" routerLink="../cliente" (click)="consultarCli(cli.idCliente)"><h6>Modificar <i class='bx bxs-edit-alt'></i></h6></a>
                                   </div>
                                   <div class="col-7">
-                                      <i class='bx bxs-id-card' ></i> Empleado<br>
-                                      <i class='bx bx-male-female' ></i> Masculino<br>
-                                     <i class='bx bx-calendar' ></i> 02/09/2001
+                                      <i class='bx bx-male-female' ></i> {{cli.sexo}}<br>
+                                     <i class='bx bx-calendar' ></i> {{ formatoFecha(cli.fechaNac) }}
                                   </div>
                                   <div class="col-5" align="right">
-                                    HECJ0109025H2S <i class='bx bxs-file' ></i>
+                                    {{ cli.rfc }} <i class='bx bxs-file' ></i>
                                   </div>
                                   <div class="col-12">
                                       <hr style="background: rgb(11, 198, 245); height: 5px;">
                                   </div>
                                   <div class="col">
-                                      <i class='bx bxs-directions'></i> Colonia, Calle 2030 
+                                    <i class='bx bxs-city'></i> {{cli.ciudad}} <br>
+                                    <i class='bx bxs-directions'></i> {{cli.colonia}},<br> 
+                                    {{ cli.calle }} 
                                   </div>
                                   <div class="col-5" align="right">
-                                    3329688602 <i class='bx bxs-phone' ></i><br>
-                                    JavierHC@hotmail.com <i class='bx bxs-envelope' ></i>
+                                    {{ formatoTelefono(cli.telefono) }} <i class='bx bxs-phone' ></i><br>
+                                    {{ cli.email }} <i class='bx bxs-envelope' ></i>
                                   </div>
                               </div>
                           </div>

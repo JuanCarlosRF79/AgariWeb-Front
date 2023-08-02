@@ -12,11 +12,11 @@ export class ClienteService {
   constructor(private http:HttpClient) { }
 
   consultarCli(cliente:object){
-    return this.http.post<any>(this.url+"/buscar",cliente);
+    return this.http.post<any>(this.url+"/buscar/web",cliente);
   }
 
   insertarCli(cliente:object){
-    return this.http.post<any>(this.url,cliente);
+    return this.http.post<any>(this.url+"/insertar",cliente);
   }
 
   modificarCli(cliente:object){
