@@ -23,7 +23,7 @@ export class ProductoService {
   }
 
   modificarProd(producto:object){
-    return this.http.put<any>(this.url+"/",producto);
+    return this.http.put<any>(this.url+"/modificar",producto);
   }
 
   eliminarProd(producto:object){

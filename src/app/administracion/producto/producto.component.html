@@ -18,7 +18,7 @@
               <div class="input-group-prepend w-25">
                 <span class="input-group-text bg-dark">Código producto: </span>
               </div>
-              <input id="nombre" maxlenght="100" class="form-control" type="text" placeholder="Código del Producto" [(ngModel)]="producto.idProducto" [ngModelOptions]="{standalone: true}">
+              <input id="nombre" maxlenght="100" class="form-control" type="number" min="1" max="productos.length" placeholder="Código del Producto" [(ngModel)]="producto.idProducto" [ngModelOptions]="{standalone: true}">
             </div>
           </div>
 
@@ -36,7 +36,7 @@
               <div class="input-group-prepend w-25">
                 <span class="input-group-text bg-dark">Precio a venta: </span>
               </div>
-              <input id="costoIndividual" maxlenght="9" class="form-control" type="text" placeholder="Precio del producto al público" [(ngModel)]="producto.costoIndividual" [ngModelOptions]="{standalone: true}">
+              <input id="costoIndividual" min="0" class="form-control" type="number" placeholder="Precio del producto al público" [(ngModel)]="producto.costoIndividual" [ngModelOptions]="{standalone: true}">
             </div>
           </div>
   
@@ -90,6 +90,24 @@
               </select>
             </div>
           </div>
+
+          <div class="row justify-content-md-center mb-2">
+            <div class="input-group mb-auto">
+              <div class="input-group-prepend w-25">
+                <span class="input-group-text bg-dark">Última venta: </span>
+              </div>
+              <input class="form-control" type="date" [(ngModel)]="producto.ultimaVenta" [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>
+
+          <div class="row justify-content-md-center mb-2">
+            <div class="input-group mb-auto">
+              <div class="input-group-prepend w-25">
+                <span class="input-group-text bg-dark">Último surtido: </span>
+              </div>
+              <input class="form-control" type="date" [(ngModel)]="producto.ultimoSurtido" [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>
   
           <div class="row justify-content-md-center mb-2">
             <div class="input-group mb-auto">
@@ -110,7 +128,8 @@
               <div class="input-group-prepend w-25">
                 <span class="input-group-text bg-dark">Imagén: </span>
               </div>
-                <input class="form-control" type="file" id="imagen" accept="image/png, image/jpeg, image/jpg">
+                <input class="form-control" type="file" id="imagen" (change)="getBase64($event)"  accept="image/jpg , image/png , image/jpeg">
+                <input [(ngModel)]="producto.img" [ngModelOptions]="{standalone: true}" type="hidden">
             </div>
           </div>
   
@@ -118,10 +137,8 @@
             <div class="input-group mb-auto">
               <div class="input-group-prepend w-25">
               </div>
-              <img *ngIf="producto.img != ''; else esvacio" src="{{ producto.img }}" alt="" width="350px" height="250px">
-              <ng-template #esvacio>
-                <img src="https://www.lg.com/mx/images/lavadoras-y-secadoras/md07547461/Gallery/D_11.jpg" alt="" width="350px" height="250px">
-              </ng-template>
+              <img *ngIf="producto.img!=null && producto.img!=''" src="data:image/jpg;base64, {{ producto.img }}" alt="" width="350px" height="250px">
+              <img *ngIf="producto.img==null || producto.img=='' " src="https://www.lg.com/mx/images/lavadoras-y-secadoras/md07547461/Gallery/D_11.jpg" alt="" width="350px" height="250px">
             </div>
           </div>
   
@@ -130,12 +147,11 @@
               <div class="col-md-auto">
                 <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                   <div class="btn-group me-2" role="group" aria-label="First group">
-                    <input id="submit" type="button" name="btn-operacion" class="btn btn-primary"  value="Guardar">
-                    <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" value="Modificar">
+                    <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" (click)="insertarProd()" value="Guardar">
+                    <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" (click)="modificarProd()" value="Modificar">
                     <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" (click)="buscarProd()" value="Buscar">
-                    <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" value="Eliminar">
-                    <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" value="Mostrar todo">
-                    <input id="submit" type="submit" name="btn-operacion" class="btn btn-primary" value="Limpiar">
+                    <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" (click)="eliminarProd()" value="Eliminar">
+                    <input id="submit" type="submit" name="btn-operacion" class="btn btn-primary" (click)="limpiar()" value="Limpiar">
                   </div>
                 </div>
               </div>
@@ -157,7 +173,7 @@
                         <h4>{{prod.nombre}} #{{prod.idProducto}}</h4>
                     </div>
                     <div class="col-3" align="right">
-                        <a style="text-decoration:none;" routerLink="../servicio"><h6>Modificar <i class='bx bxs-edit-alt'></i></h6></a>
+                        <a style="text-decoration:none;" routerLink="../producto" (click)="consultarProd(prod.idProducto)" ><h6>Modificar <i class='bx bxs-edit-alt'></i></h6></a>
                     </div>
                     <div class="col-12">
                       <p><i class='bx bxs-info-circle'></i> {{prod.descripcionProd}} </p>
@@ -167,12 +183,21 @@
                        <div *ngIf="prod.img==null"><img src="https://www.lg.com/mx/images/lavadoras-y-secadoras/md07547461/Gallery/D_11.jpg" width="auto" height="150px"></div>
                        <div *ngIf="prod.img!=null"><img src="data:image/png;base64, {{prod.img}}" width="auto" height="150px"></div>
                     </div>
-                    <div class="col" align="right">
-                      ${{ prod.costoIndividual }} <i class='bx bxs-badge-dollar'></i><br>
-                      {{prod.stock}} <i class='bx bxs-component'></i><br>
-                      {{prod.marca}} <i class='bx bxs-registered'></i><br>
-                      {{ prod.condicion }} <i class='bx bxs-star'></i><br><br>
-                      <h5> {{ prod.estado }} </h5> 
+                    <div class="col-8">
+                      <div class="row">
+                        <div class="col-6" align="right">
+                          <div *ngIf="prod.ultimaVenta!=null" ><i class='bx bxs-calendar-minus' ></i> {{ formatoFecha(prod.ultimaVenta) }}</div>
+                          <div *ngIf="prod.ultimoSurtido!=null"><i class='bx bxs-calendar-plus' ></i> {{ formatoFecha(prod.ultimoSurtido) }}</div>
+                        </div>
+
+                        <div class="col-6" align="right">
+                          ${{ prod.costoIndividual }} <i class='bx bxs-badge-dollar'></i><br>
+                          {{prod.stock}} <i class='bx bxs-component'></i><br>
+                          {{prod.marca}} <i class='bx bxs-registered'></i><br>
+                          {{ prod.condicion }} <i class='bx bxs-star'></i><br><br>
+                          <h5> {{ prod.estado }} </h5> 
+                        </div>
+                      </div>
                     </div>
                 </div>
             </div>
