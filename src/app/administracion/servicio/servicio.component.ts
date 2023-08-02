@@ -221,8 +221,12 @@ export class ServicioComponent {
         this.alerta("Servicios filtrados","Aceptar")
       },
       (err)=>{
-        this.alerta("Error al buscar servicio","Aceptar")
-        console.log(err)
+        if(err.error.text=="No hay servicios registrados"){
+          this.alerta("No hay servicios que coincidan","Aceptar")
+        }else{
+          this.alerta("Error al buscar servicio","Aceptar")
+          console.log(err)
+        }
       })
   }
 
@@ -233,8 +237,10 @@ export class ServicioComponent {
     ||this.servicio.proximaCita!=""){
       
       if(this.servicio.fechaOrden!=""&&this.servicio.fechaOrden!=null){
+        this.servicio.estadoServicio="Solicitado"
         this.servicio.fechaFiltro=this.servicio.fechaOrden;
       }else if(this.servicio.proximaCita!=""&&this.servicio.proximaCita!=null){
+        this.servicio.estadoServicio="En proceso"
         this.servicio.fechaFiltro=this.servicio.proximaCita;
       }else if(this.servicio.fechaFinalizado!=""&&this.servicio.fechaFinalizado!=null){
         this.servicio.fechaFiltro=this.servicio.fechaFinalizado;
