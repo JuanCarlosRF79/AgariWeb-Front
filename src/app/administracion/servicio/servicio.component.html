@@ -113,6 +113,7 @@
             <div class="input-group-prepend w-25">
               <span class="input-group-text bg-dark">Fecha finalización: </span>
             </div>
+            <input [(ngModel)]="servicio.fechaFiltro" [ngModelOptions]="{standalone: true}" type="hidden">
             <input class="form-control" id="fechaFinalizado" type="date" [(ngModel)]="servicio.fechaFinalizado" [ngModelOptions]="{standalone: true}">
           </div>
         </div>

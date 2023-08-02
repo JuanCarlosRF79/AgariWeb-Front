@@ -31,6 +31,10 @@ export class ServicioService {
     return this.http.post<any>(this.url+"/buscar",servicio);
   }
 
+  filtrarServ(servicio:object){
+    return this.http.post<any>(this.url+"/filtrar/web",servicio);
+  }
+
   insertarServ(servicio:object){
     return this.http.post<any>(this.url+"/insertar",servicio);
   }

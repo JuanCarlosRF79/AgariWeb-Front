@@ -78,7 +78,8 @@ export class ServicioComponent {
     descProb:"",
     pago:"",
     municipio:"",
-    costo:""
+    costo:"",
+    fechaFiltro:""
 
   }
 
@@ -185,36 +186,62 @@ export class ServicioComponent {
     );
   }
 
+  servicioConsultar(){
+    this.servicioSev.consultarServ(this.servicio).subscribe(
+      (res)=>{
+        this.servicios=[]
+        this.servicios.push(res[0])
+
+        this.servicio=res[0];
+        
+        var fechas = res[0].fechaOrden.split("T")
+        this.servicio.fechaOrden = fechas[0]
+
+        if(res[0].proximaCita!=null){
+          fechas=res[0].proximaCita.split("T")
+          this.servicio.proximaCita = fechas[0]
+        }
+
+        if(res[0].fechaFinalizado!=null){
+          fechas=res[0].fechaFinalizado.split("T")
+          this.servicio.fechaFinalizado = fechas[0]
+        }
+
+      },(err)=>{
+        this.alerta("Error al buscar servicio","Aceptar")
+        console.log(err)
+      }
+    );
+  }
+
+  filtrarServ(){
+    this.servicioSev.filtrarServ(this.servicio).subscribe(
+      (res)=>{
+        this.servicios=res
+        this.alerta("Servicios filtrados","Aceptar")
+      },
+      (err)=>{
+        this.alerta("Error al buscar servicio","Aceptar")
+        console.log(err)
+      })
+  }
+
   consultarServ(){
     if(this.servicio.idServicio!=""){
-      this.servicioSev.consultarServ(this.servicio).subscribe(
-        (res)=>{
-          this.servicios=[]
-          this.servicios.push(res[0])
-
-          this.servicio=res[0];
-          
-          var fechas = res[0].fechaOrden.split("T")
-          this.servicio.fechaOrden = fechas[0]
-
-          if(res[0].proximaCita!=null){
-            fechas=res[0].proximaCita.split("T")
-            this.servicio.proximaCita = fechas[0]
-          }
-
-          if(res[0].fechaFinalizado!=null){
-            fechas=res[0].fechaFinalizado.split("T")
-            this.servicio.fechaFinalizado = fechas[0]
-          }
-
-        },(err)=>{
-          this.alerta("Error al buscar servicio","Aceptar")
-          alert(err.error)
-          console.log(err)
-        }
-      );
+      this.servicioConsultar()
+    }else if(this.servicio.estadoServicio!=""||this.servicio.fechaFinalizado!=""||this.servicio.fechaOrden
+    ||this.servicio.proximaCita!=""){
+      
+      if(this.servicio.fechaOrden!=""&&this.servicio.fechaOrden!=null){
+        this.servicio.fechaFiltro=this.servicio.fechaOrden;
+      }else if(this.servicio.proximaCita!=""&&this.servicio.proximaCita!=null){
+        this.servicio.fechaFiltro=this.servicio.proximaCita;
+      }else if(this.servicio.fechaFinalizado!=""&&this.servicio.fechaFinalizado!=null){
+        this.servicio.fechaFiltro=this.servicio.fechaFinalizado;
+      }
+      this.filtrarServ()
     }else{
-      this.alerta("Ingresa un código de servicio","Aceptar")
+      this.alerta("Por favor llenar los campos","Aceptar")
     }
   }
 
@@ -257,6 +284,7 @@ export class ServicioComponent {
     this.servicio.fechaFinalizado =  ""
     this.servicio.proximaCita =  ""
     this.servicio.pagoServicio = ""
+    this.servicio.fechaFiltro=""
   }
 
   limpiar(){
