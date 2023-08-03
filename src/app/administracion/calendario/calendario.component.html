@@ -11,26 +11,52 @@
 
 <div class="col-12 d-flex flex-row px-5">
     <div class="col-6 ms-5 p-5" style="width: 40%;">
-      <div class="col-12">
+      <div class="row">
+        <div class="input-group mb-2">
+          <div class="input-group-prepend w-25">
+            <span class="input-group-text bg-dark">Estado: </span>
+          </div>      
+            <select name="estado" class="form-select"  id="estado"[(ngModel)]="filtro.estadoServicio" [ngModelOptions]="{standalone: true}">
+              <option value="" selected>Seleccione uno</option>
+              <option value="Solicitado">Solicitado</option>
+              <option value="En proceso">En proceso</option>
+              <option value="Cancelado">Cancelado</option>
+              <option value="Completado">Completado</option>
+            </select>
+          </div>
+      </div>
+    <div class="row mb-2">
       <mat-card>
         <mat-calendar [(selected)]="selected"></mat-calendar>
       </mat-card>
-      <p>Dia seleccionado {{ formatSelectedDate() }}</p>
     </div>
+    <div class="row">
+      <p style="display: none;">Dia seleccionado {{ formatSelectedDate() }}</p>
+      <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group me-2" role="group" aria-label="First group">
+          <input id="submit" type="button" class="btn btn-primary" (click)="filtrarServ()" value="Consultar">
+          <input id="submit" type="button" class="btn btn-warning" (click)="limpiar()" value="Limpiar">
+        </div>
+      </div>
+    </div>
+
+      
+    <app-modal [showModal]="showModal" (closeModal)="onCloseModal()"></app-modal>
+    
     </div>
     <div class="col-6 pt-5 container px-5 d-flex align-items-start">
       <div class="col-12">
         
-      <div class="col-12 container justify-content-buttom" style="overflow-y: auto; height: 720px;">
+      <div class="col-12 container justify-content-buttom" style="overflow-y: auto; height: 600px;">
         <div class="pt-4" *ngFor="let serv of servicios ">
             <div class="container shadow  bg-white rounded">
                 <div class="col-12 d-flex flex-wrap">
-                    <div class="col-6">
+                    <div class="col-8">
                         <h4>Servicio {{ serv.estadoServicio }} #{{ serv.idServicio }}</h4>
                     </div>
-                    <div class="col-6 d-flex align-items-start justify-content-end">
-                      <button type="button" (click)="onOpenModal()">Editar</button>
-  <app-modal [showModal]="showModal" (closeModal)="onCloseModal()"></app-modal>
+                    <div class="col-4 d-flex align-items-start justify-content-end">
+                      <button *ngIf="serv.estadoServicio=='Solicitado'" type="button" (click)="buscarServ(serv.idServicio)">Modificar <i class='bx bxs-edit-alt'></i></button>
+                      <button *ngIf="serv.estadoServicio=='En proceso'" type="button" (click)="buscarServ(serv.idServicio)">Modificar <i class='bx bxs-edit-alt'></i></button>
                     </div>
                     <div class="col-6">
                       <div *ngIf="serv.estadoServicio=='Solicitado'" ><i class='bx bxs-calendar'></i> {{ formatoFecha(serv.fechaOrden) }} </div>

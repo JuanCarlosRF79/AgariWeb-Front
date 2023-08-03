@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { ServicioService } from 'src/app/servicios/servicio.service';
 import { ClienteService } from 'src/app/servicios/cliente.service';
-import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatCardModule} from '@angular/material/card';
-import {MatNativeDateModule} from '@angular/material/core';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {DateAdapter} from '@angular/material/core';
 
 @Component({
   selector: 'app-calendario',
@@ -15,16 +13,14 @@ import {MatNativeDateModule} from '@angular/material/core';
 export class CalendarioComponent {
   selected: Date | null;
   showModal: boolean = false;
-  constructor(private servicioSev:ServicioService, private clienteServ:ClienteService, private snackBar:MatSnackBar) {
-    this.selected = null;
+
+  constructor(private servicioSev:ServicioService, private clienteServ:ClienteService, private snackBar:MatSnackBar,
+    private dateAdapter:DateAdapter<any>) {
+      this.dateAdapter.setLocale('mx')
+      this.selected = null;
   }
   ngOnInit(): void {
-    this.consultarClientes()
     this.todoServ()
-    if(this.servicioSev.getIdServicio()!=null){
-      this.servicio.idServicio=this.servicioSev.getIdServicio()
-      this.consultarServ()
-    }
   }
 
 
@@ -58,9 +54,12 @@ municipios=[
   "Zapotitlan de Vadillo","Zapotlan del Rey","Zapotlan el Grande","Zapotlanejo"
 ];
 
-clientes:any
-maxId:any
 servicios:any
+
+filtro={
+  estadoServicio:"",
+  fechaFiltro:""
+}
 
 servicio={
   idServicio:"",
@@ -87,30 +86,26 @@ servicio={
   costo:""
 
 }
+
+buscarServ(idServicio:any){
+  this.servicioSev.setIdServicio(idServicio)
+  this.servicioSev.sendClickEvent(idServicio)
+  this.onOpenModal()
+}
+
 onOpenModal() {
   this.showModal = true;
 }
 
 onCloseModal() {
+  this.vaciar()
   this.showModal = false;
-}
-
-consultarClientes(){
-  this.clienteServ.todoCli().subscribe(
-    (res)=>{
-      this.clientes=res
-      //console.log(this.clientes)
-    },(err)=>{
-      console.log(err);
-    }
-  );
 }
 
 todoServ(){
   this.servicioSev.todoServ().subscribe(
     (res)=>{
       this.servicios=res
-      this.maxId=res.length
       //console.log(this.servicios)
     },(err)=>{
       alert(err.error)
@@ -119,139 +114,20 @@ todoServ(){
   );
 }
 
-insertarServ(){
-  if(this.servicio.descripcionDireccion!=""&&this.servicio.descripcionProblema!=""
-  &&this.servicio.idCliente!=""&&this.servicio.idServicio!=""){
-
-    this.servicio.descDire=this.servicio.descripcionDireccion
-    this.servicio.descProb=this.servicio.descripcionProblema
-    this.servicio.pago="Efectivo"
-    this.servicio.municipio=this.servicio.ciudad
-    if(this.servicio.pagoServicio==""){
-      this.servicio.costo="300.00"
-    }else{
-      this.servicio.costo=this.servicio.pagoServicio
-    }
-
-    this.servicioSev.insertarServ(this.servicio).subscribe(
-      (res)=>{
-        this.servicio.idServicio=res[0].idServicio
-        this.consultarServ()
-        //console.log(res[0].idServicio)
-      },
-      (err)=>{
-        console.log(err)
-      }
-    )
-  }else{
-    this.alerta("Llena todos los campos","Aceptar")
-  }
-}
-
-modificarServ(){
-  if(this.servicio.idServicio!=""){
-    if(this.servicio.fechaFinalizado==null){
-      this.servicio.fechaFinalizado=""
-    }
-
-    this.servicioSev.modificarServ(this.servicio).subscribe(
-      (res)=>{
-        if(res[0].affectado>0){
-          this.alerta("Servicio modificado","Aceptar")
-          this.consultarServ()
-        }
-      },
-      (err)=>{
-        this.alerta("Error al modificar servicio","Aceptar")
-        console.log(err)
-      }
-    )
-  }else{
-    this.alerta("Ingresa un código de servicio","Aceptar")
-  }
-
-}
-
-buscarServ(idServicio:any){
-  this.servicio.idServicio=idServicio
-  this.servicioSev.consultarServ(this.servicio).subscribe(
+filtrarServ(){
+  this.servicioSev.filtrarServ(this.filtro).subscribe(
     (res)=>{
-      this.servicio=res[0];
-      
-      var fechas = res[0].fechaOrden.split("T")
-      this.servicio.fechaOrden = fechas[0]
-
-      if(res[0].proximaCita!=null){
-        fechas=res[0].proximaCita.split("T")
-        this.servicio.proximaCita = fechas[0]
-      }
-
-      if(res[0].fechaFinalizado!=null){
-        fechas=res[0].fechaFinalizado.split("T")
-        this.servicio.fechaFinalizado = fechas[0]
-      }
-
-    },(err)=>{
-      alert(err.error)
-      console.log(err);
-    }
-  );
-}
-
-consultarServ(){
-  if(this.servicio.idServicio!=""){
-    this.servicioSev.consultarServ(this.servicio).subscribe(
-      (res)=>{
-        this.servicios=[]
-        this.servicios.push(res[0])
-
-        this.servicio=res[0];
-        
-        var fechas = res[0].fechaOrden.split("T")
-        this.servicio.fechaOrden = fechas[0]
-
-        if(res[0].proximaCita!=null){
-          fechas=res[0].proximaCita.split("T")
-          this.servicio.proximaCita = fechas[0]
-        }
-
-        if(res[0].fechaFinalizado!=null){
-          fechas=res[0].fechaFinalizado.split("T")
-          this.servicio.fechaFinalizado = fechas[0]
-        }
-
-      },(err)=>{
+      this.servicios=res
+      this.alerta("Servicios filtrados","Aceptar")
+    },
+    (err)=>{
+      if(err.error.text=="No hay servicios registrados"){
+        this.alerta("No hay servicios que coincidan","Aceptar")
+      }else{
         this.alerta("Error al buscar servicio","Aceptar")
-        alert(err.error)
         console.log(err)
       }
-    );
-  }else{
-    this.alerta("Ingresa un código de servicio","Aceptar")
-  }
-}
-
-eliminarServ(){
-  if(this.servicio.idServicio!=""){
-    if(this.servicio.pagoServicio=="300" && this.servicio.estadoServicio=="Solicitado"){
-      this.servicio.pagoServicio="0.0"
-    }
-
-    this.servicioSev.eliminarServ(this.servicio).subscribe(
-      (res)=>{
-        if(res>0){
-          this.alerta("Servicio cancelado","Aceptar")
-          this.consultarServ()
-        }
-      },
-      (err)=>{
-        this.alerta("Error al cancelar servicio","Aceptar")
-        console.log(err)
-      }
-    )
-  }else{
-    this.alerta("Ingresa un código de servicio","Aceptar")
-  }
+    })
 }
 
 vaciar(){
@@ -270,6 +146,10 @@ vaciar(){
   this.servicio.fechaFinalizado =  ""
   this.servicio.proximaCita =  ""
   this.servicio.pagoServicio = ""
+
+  this.filtro.estadoServicio=""
+  this.filtro.fechaFiltro=""
+  this.selected=null
 }
 
 limpiar(){
@@ -297,6 +177,7 @@ alerta(mensaje:string,accion:string){
 
   formatSelectedDate(): string {
     if (!this.selected) {
+      this.filtro.fechaFiltro=""
       return ''; // Manejar el caso en el que selected sea null o undefined.
     }
 
@@ -304,6 +185,7 @@ alerta(mensaje:string,accion:string){
     const month = (this.selected.getMonth() + 1).toString().padStart(2, '0');
     const day = this.selected.getDate().toString().padStart(2, '0');
 
+    this.filtro.fechaFiltro=`${year}-${month}-${day}`
     return `${year}-${month}-${day}`;
   }
 }

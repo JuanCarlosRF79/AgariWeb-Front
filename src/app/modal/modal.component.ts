@@ -1,30 +1,37 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ServicioService } from 'src/app/servicios/servicio.service';
 import { ClienteService } from 'src/app/servicios/cliente.service';
-import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import { Subscription } from 'rxjs';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.css']
 })
-export class ModalComponent {
+export class ModalComponent{
   @Input() showModal: boolean = false;
+  @Input() idServicio: string = "0";
   @Output() closeModal = new EventEmitter<void>();
 
   onCloseModal() {
     this.closeModal.emit();
   }
+
   constructor(private servicioSev:ServicioService, 
     private clienteServ:ClienteService, private snackBar:MatSnackBar) { }
 
+
+    //Ejecutar función por fuera
+
+    clickEventsubscription=this.servicioSev.getClickEvent().subscribe(
+      ()=>{
+        this.buscarServ(this.servicioSev.getIdServicio( ))
+      }
+    )
+
     ngOnInit(): void {
       this.consultarClientes()
-      this.todoServ()
-      if(this.servicioSev.getIdServicio()!=null){
-        this.servicio.idServicio=this.servicioSev.getIdServicio()
-        this.consultarServ()
-      }
     }
 
   municipios=[
@@ -64,8 +71,8 @@ export class ModalComponent {
   servicio={
     idServicio:"",
     idCliente:"",
-    nombreEmp:"",
-    apellidoPatEmp:"",
+    nombre_cli:"",
+    apellidoPat_cli:"",
     telefono:"",
     estado: "Jalisco",
     ciudad: "",
@@ -96,48 +103,6 @@ export class ModalComponent {
         console.log(err);
       }
     );
-  }
-
-  todoServ(){
-    this.servicioSev.todoServ().subscribe(
-      (res)=>{
-        this.servicios=res
-        this.maxId=res.length
-        //console.log(this.servicios)
-      },(err)=>{
-        alert(err.error)
-        console.log(err);
-      }
-    );
-  }
-
-  insertarServ(){
-    if(this.servicio.descripcionDireccion!=""&&this.servicio.descripcionProblema!=""
-    &&this.servicio.idCliente!=""&&this.servicio.idServicio!=""){
-
-      this.servicio.descDire=this.servicio.descripcionDireccion
-      this.servicio.descProb=this.servicio.descripcionProblema
-      this.servicio.pago="Efectivo"
-      this.servicio.municipio=this.servicio.ciudad
-      if(this.servicio.pagoServicio==""){
-        this.servicio.costo="300.00"
-      }else{
-        this.servicio.costo=this.servicio.pagoServicio
-      }
-
-      this.servicioSev.insertarServ(this.servicio).subscribe(
-        (res)=>{
-          this.servicio.idServicio=res[0].idServicio
-          this.consultarServ()
-          //console.log(res[0].idServicio)
-        },
-        (err)=>{
-          console.log(err)
-        }
-      )
-    }else{
-      this.alerta("Llena todos los campos","Aceptar")
-    }
   }
 
   modificarServ(){
@@ -188,6 +153,10 @@ export class ModalComponent {
         console.log(err);
       }
     );
+  }
+
+  alertado(){
+    alert(this.idServicio+"")
   }
 
   consultarServ(){
@@ -249,8 +218,8 @@ export class ModalComponent {
   vaciar(){
     this.servicio.idServicio=""
     this.servicio.idCliente=""
-    this.servicio.nombreEmp=""
-    this.servicio.apellidoPatEmp=""
+    this.servicio.nombre_cli=""
+    this.servicio.apellidoPat_cli=""
     this.servicio.telefono=""
     this.servicio.ciudad= ""
     this.servicio.calle = ""
@@ -266,7 +235,6 @@ export class ModalComponent {
 
   limpiar(){
     this.vaciar()
-    this.todoServ()
   }
 
   formatoFecha(fecha:any){

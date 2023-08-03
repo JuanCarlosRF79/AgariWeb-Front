@@ -2,71 +2,34 @@
     <div class="modal-container">
       <div class="modal-content">
 
-        <div class="col-12">
+        <div class="col-12" style="padding-right: 10px;">
             <form>
                 <div id="datos-servicio" align="center">
-                 <div class="row justify-content-md-center mb-2">
-                  <div class="input-group mb-auto">
-                      <div class="input-group-prepend w-25">
-                          <span class="input-group-text bg-dark">Código: </span>
-                          </div>   
-                            <input class="form-control"  type="number" min="1" max="{{ maxId }}"  placeholder="Código del servicio"  class="form-control" [(ngModel)]="servicio.idServicio" [ngModelOptions]="{standalone: true}">
-                          </div>
+                 <h2>Servicio {{servicio.estadoServicio}} #{{ servicio.idServicio }}</h2>
+                  <br>
+                  <h5 align="left">Información del cliente </h5>
+                  <div class="row">
+                    <div class="col-7 mb-2" align="left">
+                      <i class='bx bxs-city'></i> {{servicio.ciudad}} <br>
+                      <i class='bx bxs-directions'></i> {{ servicio.colonia }},<br> {{ servicio.calle }}
                     </div>
-                  <div class="input-group mb-2">
-                    <div class="input-group-prepend w-25">
-                      <span class="input-group-text bg-dark">Cliente:</span>
+                    <div class="col-5" align="right">
+                      {{ servicio.nombre_cli }} {{ servicio.apellidoPat_cli }} <i class='bx bxs-user'></i><br>
+                      {{ formatoTelefono(servicio.telefono) }} <i class='bx bxs-phone'></i><br>
                     </div>
-                    <select class="form-select" [(ngModel)]="servicio.idCliente" [ngModelOptions]="{standalone: true}">
-                      <option value="" selected>Seleccionar cliente</option>
-                      <option *ngFor="let cli of clientes" value="{{cli.idCliente}}" selected>{{cli.nombre_cli+" "+cli.apellidoPat_cli}}</option>
-                    </select>
+                    <div class="col-12" align="left">
+                      <i class='bx bxs-map'></i> {{ servicio.descripcionDireccion }}
+                    </div>
                   </div>
+                  
+                  <hr style="background: rgb(11, 198, 245); height: 5px;">
+
+                  <h5>Información del servicio </h5>
+
                   <div class="row justify-content-md-center mb-2">
                     <div class="input-group mb-auto">
                       <div class="input-group-prepend w-25">
-                        <span class="input-group-text bg-dark">Teléfono: </span>
-                      </div>
-                      <input class="form-control" id="telefono_cli" maxlength="100" type="text" placeholder="Teléfono para contactar al cliente" [(ngModel)]="servicio.telefono" [ngModelOptions]="{standalone: true}">
-                    </div>
-                  </div>
-                  <div class="input-group mb-2">
-                    <div class="input-group-prepend w-25">
-                      <span class="input-group-text bg-dark">Municipio:</span>
-                    </div>
-                    <select class="form-select" [(ngModel)]="servicio.ciudad" [ngModelOptions]="{standalone: true}">
-                      <option value="" selected>Seleccionar municipio</option>
-                      <option *ngFor="let mun of municipios" value="{{mun}}" selected>{{mun}}</option>
-                    </select>
-                  </div>
-                  <div class="row justify-content-md-center mb-2">
-                    <div class="input-group mb-auto">
-                      <div class="input-group-prepend w-25">
-                        <span class="input-group-text bg-dark">Calle: </span>
-                      </div>
-                      <input class="form-control" id="direccionCalle" maxlength="255" type="text" placeholder="Dirección calle del cliente" [(ngModel)]="servicio.calle" [ngModelOptions]="{standalone: true}">
-                    </div>
-                  </div>
-                  <div class="row justify-content-md-center mb-2">
-                    <div class="input-group mb-auto">
-                      <div class="input-group-prepend w-25">
-                        <span class="input-group-text bg-dark">Colonia: </span>
-                      </div>
-                      <input class="form-control" id="direccionColonia" maxlength="255" type="text" placeholder="Dirección colonia del cliente" [(ngModel)]="servicio.colonia" [ngModelOptions]="{standalone: true}">
-                    </div>
-                  </div>
-                  <div class="row justify-content-md-center mb-2">
-                    <div class="input-group mb-auto">
-                      <div class="input-group-prepend w-25">
-                        <span class="input-group-text bg-dark">Desc. vivienda: </span>
-                      </div>
-                      <textarea class="form-control" id="descripcionDireccion" style="height: 20px;" maxlength="255" type="text" placeholder="Descripción de la vivienda del cliente" [(ngModel)]="servicio.descripcionDireccion" [ngModelOptions]="{standalone: true}"></textarea>
-                    </div>
-                  </div>
-                  <div class="row justify-content-md-center mb-2">
-                    <div class="input-group mb-auto">
-                      <div class="input-group-prepend w-25">
-                        <span class="input-group-text bg-dark">Desc. problema: </span>
+                        <span class="input-group-text bg-dark">Problema: </span>
                       </div>
                       <textarea class="form-control" style="height: 20px;" type="text" placeholder="Descripción del problema que tiene el cliente" [(ngModel)]="servicio.descripcionProblema" [ngModelOptions]="{standalone: true}"></textarea>
                     </div>
@@ -82,40 +45,11 @@
                   <div class="row justify-content-md-center mb-2">
                     <div class="input-group mb-auto">
                       <div class="input-group-prepend w-25">
-                        <span class="input-group-text bg-dark">Fecha solicitud: </span>
-                      </div>
-                      <input class="form-control" id="fechaOrden" type="date" [(ngModel)]="servicio.fechaOrden" [ngModelOptions]="{standalone: true}">
-                    </div>
-                  </div>
-                  <div class="row justify-content-md-center mb-2">
-                    <div class="input-group mb-auto">
-                      <div class="input-group-prepend w-25">
                         <span class="input-group-text bg-dark">Próxima cita: </span>
                       </div>
                       <input class="form-control" id="fechaOrden" type="date" [(ngModel)]="servicio.proximaCita" [ngModelOptions]="{standalone: true}">
                     </div>
                   </div>
-                  <div class="row justify-content-md-center mb-2">
-                    <div class="input-group mb-auto">
-                      <div class="input-group-prepend w-25">
-                        <span class="input-group-text bg-dark">Finalización: </span>
-                      </div>
-                      <input class="form-control" id="fechaFinalizado" type="date" [(ngModel)]="servicio.fechaFinalizado" [ngModelOptions]="{standalone: true}">
-                    </div>
-                  </div>
-                  <div class="row justify-content-md-center mb-2">
-                    <div class="input-group mb-auto">
-                      <div class="input-group-prepend w-25">
-                        <span class="input-group-text bg-dark">Estado: </span>
-                      </div>      
-                            <select name="estado" class="form-select"  id="estado"[(ngModel)]="servicio.estadoServicio" [ngModelOptions]="{standalone: true}">
-                              <option value="" selected>Seleccione uno</option>
-                              <option value="Solicitado">Solicitado</option>
-                              <option value="En proceso">En proceso</option>
-                              <option value="Cancelado">Cancelado</option>
-                              <option value="Completado">Completado</option>
-                            </select>              
-                      </div>
                 <br>
                 <br>
                 
@@ -123,31 +57,17 @@
                   <div class="row justify-content-center">
                       <div class="col-md-auto">
                   <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                  <div class="" role="group" aria-label="First group">
-                    <input id="submit" type="button" name="btn-operacion" class="btn btn-primary me-2" (click)="modificarServ()" value="Modificar">
-                    <input id="submit" type="button" name="btn-operacion" class="btn btn-primary me-2" (click)="eliminarServ()" value="Eliminar">
-                    <input id="submit" type="submit" name="btn-operacion" class="btn btn-primary" style="background-color: red;" (click)="onCloseModal()" value="Cerrar">
+                  <div class="btn-group me-2" role="group" aria-label="First group">
+                    <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" (click)="modificarServ()" value="Confirmar">
+                    <input id="submit" type="button" name="btn-operacion" class="btn btn-success" (click)="eliminarServ()" value="Completar">
+                    <input id="submit" type="submit" name="btn-operacion" class="btn btn-danger"(click)="onCloseModal()" value="Cancelar">
                   </div>
                 </div>
               </div>
           </div>    
-                </div>
-                <br><br>
-                <div class="contenedorAlr" align="center">
-                  <!--
-                    <div class="alert" *ngIf="alertaAbajo != false">
-                        <span class="closebtn" (click)="borrarAbajo()">&times;</span> 
-                        <strong>¡ERROR!</strong> Ha ocurrido un error al <strong>{{ descripcionAlert }}</strong> la nota de servicio
-                    </div>
-                    <div class="alertEx" *ngIf="exito != false">
-                        <span class="closebtn" (click)="borrarAbajo()">&times;</span> 
-                        Se ha podido <strong>{{ descripcionAlert }}</strong> la nota de servicio
-                    </div>
-                    -->
-                </div>
-                  </div>
-                </div>
-            </form>
+          </div>
+          </div>
+          </form>
           </div>
 
 

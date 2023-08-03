@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Subject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,18 @@ export class ServicioService {
   private idServicio:any;
 
   constructor(private http:HttpClient) { }
+
+  //Ejecutar función desde otro componente para el modal
+  private subject = new Subject<any>();
+  
+  sendClickEvent(idServicio: any) {
+    this.subject.next(idServicio);
+    this.setIdServicio(idServicio)
+  }
+
+  getClickEvent(): Observable<any>{ 
+    return this.subject.asObservable();
+  }
 
   setIdServicio(codigoServ:any){
     this.idServicio=codigoServ
