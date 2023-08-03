@@ -9,6 +9,9 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatCardModule } from '@angular/material/card';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,6 +31,8 @@ import { ServicioComponent } from './administracion/servicio/servicio.component'
 import { TicketComponent } from './administracion/ticket/ticket.component';
 import { MenuBsComponent } from './administracion/menu-bs/menu-bs.component';
 import { LoginComponent } from './principal/login/login.component';
+import { CalendarioComponent } from './administracion/calendario/calendario.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +49,9 @@ import { LoginComponent } from './principal/login/login.component';
     ServicioComponent,
     TicketComponent,
     MenuBsComponent,
-    LoginComponent
+    LoginComponent,
+    CalendarioComponent,
+    ModalComponent
   ],
   imports: [
     HttpClientModule,
@@ -57,7 +64,10 @@ import { LoginComponent } from './principal/login/login.component';
     MatMenuModule,
     MatButtonModule,
     NgbModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCardModule,
+    MatNativeDateModule,
+    MatDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

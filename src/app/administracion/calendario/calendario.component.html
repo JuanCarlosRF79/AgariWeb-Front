@@ -1,0 +1,75 @@
+<header>
+<app-menu-bs></app-menu-bs>
+</header>
+
+<body>
+
+<div id="encabezado" class="text-center">
+  <p>Calendario de citas</p>
+</div>
+
+
+<div class="col-12 d-flex flex-row px-5">
+    <div class="col-6 ms-5 p-5" style="width: 40%;">
+      <div class="col-12">
+      <mat-card>
+        <mat-calendar [(selected)]="selected"></mat-calendar>
+      </mat-card>
+      <p>Dia seleccionado {{ formatSelectedDate() }}</p>
+    </div>
+    </div>
+    <div class="col-6 pt-5 container px-5 d-flex align-items-start">
+      <div class="col-12">
+        
+      <div class="col-12 container justify-content-buttom" style="overflow-y: auto; height: 720px;">
+        <div class="pt-4" *ngFor="let serv of servicios ">
+            <div class="container shadow  bg-white rounded">
+                <div class="col-12 d-flex flex-wrap">
+                    <div class="col-6">
+                        <h4>Servicio {{ serv.estadoServicio }} #{{ serv.idServicio }}</h4>
+                    </div>
+                    <div class="col-6 d-flex align-items-start justify-content-end">
+                      <button type="button" (click)="onOpenModal()">Editar</button>
+  <app-modal [showModal]="showModal" (closeModal)="onCloseModal()"></app-modal>
+                    </div>
+                    <div class="col-6">
+                      <div *ngIf="serv.estadoServicio=='Solicitado'" ><i class='bx bxs-calendar'></i> {{ formatoFecha(serv.fechaOrden) }} </div>
+                      <div *ngIf="serv.estadoServicio=='En proceso'" ><i class='bx bxs-calendar'></i> {{formatoFecha(serv.proximaCita) }} </div>
+                      <div *ngIf="serv.estadoServicio=='Completado'" ><i class='bx bxs-calendar'></i> {{formatoFecha(serv.fechaFinalizado) }} </div>
+                      <div *ngIf="serv.estadoServicio=='Cancelado'" ><i class='bx bxs-calendar'></i> {{formatoFecha(serv.fechaFinalizado) }} </div>
+    
+                      <i class='bx bxs-error-circle'></i> {{ serv.descripcionProblema }}<br>
+                      <i class='bx bx-money'></i> ${{ formatoCosto(serv.pagoServicio) }}
+                    </div>
+                    
+                    <div class="col-6 d-flex  align-items-end justify-content-end">
+                      <div class="col-12 d-flex flex-column align-items-end justify-content-end">
+                      <div class="col-6 d-flex align-items-start justify-content-end">
+                        {{ serv.nombre_cli }} {{ serv.apellidoPat_cli }} <i class='bx bxs-user'></i>
+                      </div>
+                      <div class="col-6 d-flex align-items-start justify-content-end">
+                        {{ formatoTelefono(serv.telefono) }} <i class='bx bxs-phone'></i>
+                      </div>
+                    </div>
+                    </div>
+                    <div class="col-12">
+                        <hr style="background: rgb(11, 198, 245); height: 5px;">
+                    </div>
+                    <div class="col-12 d-flex">
+                    <div class="col-6 ">
+                        <i class='bx bxs-city'></i> {{serv.ciudad}} <br>
+                        <i class='bx bxs-directions'></i> {{ serv.colonia }}<br> {{ serv.calle }}
+                    </div>
+                    <div class="col-6 d-flex align-items-start justify-content-end">
+                      {{ serv.descripcionDireccion }}<i class='bx bxs-map '></i>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+    </div>
+  </div>
+
+ 

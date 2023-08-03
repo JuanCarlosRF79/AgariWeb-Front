@@ -10,6 +10,7 @@ import { EnvioComponent } from './administracion/envio/envio.component';
 import { ProductoComponent } from './administracion/producto/producto.component';
 import { ServicioComponent } from './administracion/servicio/servicio.component';
 import { TicketComponent } from './administracion/ticket/ticket.component';
+import { CalendarioComponent } from './administracion/calendario/calendario.component';
 
 //Componentes Principal
 import { InicioComponent } from './principal/inicio/inicio.component';
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path: 'administracion/producto', component:ProductoComponent},
   {path: 'administracion/servicio', component:ServicioComponent},
   {path: 'administracion/ticket', component:TicketComponent},
+  {path: 'administracion/calendario', component:CalendarioComponent},
   //Reedirigir rutas inexistente a inicio
   {path:"**", redirectTo:"inicio"}
 ];
