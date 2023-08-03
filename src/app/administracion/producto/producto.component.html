@@ -114,6 +114,7 @@
               <div class="input-group-prepend w-25">
                 <span class="input-group-text bg-dark">Estado: </span>
               </div>
+              <input [(ngModel)]="producto.estadoProd" [ngModelOptions]="{standalone: true}" type="hidden">
               <select name="estado" id="estado" class="form-select" [(ngModel)]="producto.estado" [ngModelOptions]="{standalone: true}">
                 <option id="select-opt" value="">Seleccione uno</option>
                 <option id="select-opt" value="Existente">Existente</option>

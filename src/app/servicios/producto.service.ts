@@ -35,15 +35,7 @@ export class ProductoService {
   }
 
   filtrarProd(producto:object){
-    return this.http.post<any>(this.url+"/buscar/varios",producto);
-  }
-
-  filtrarProdMarc(producto:object){
-    return this.http.post<any>(this.url+"/buscar/marca",producto);
-  }
-
-  hayCarrito():boolean{
-    return !!localStorage.getItem("carrito");
+    return this.http.post<any>(this.url+"/filtrar",producto);
   }
 
 }

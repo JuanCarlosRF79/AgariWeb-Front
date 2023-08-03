@@ -28,6 +28,7 @@ export class ProductoComponent {
     ultimaVenta: "",
     ultimoSurtido: "",
     estado: "",
+    estadoProd:"",
     img: "",
   }
 
@@ -67,7 +68,7 @@ export class ProductoComponent {
         }
       )
     }else{
-      this.alerta("Ingresa un código de producto","Aceptar")
+      this.filtrarProd()
     }
   }
 
@@ -175,6 +176,24 @@ export class ProductoComponent {
     }
   }
 
+  filtrarProd(){
+    this.producto.estadoProd=this.producto.estado
+    this.productoServ.filtrarProd(this.producto).subscribe(
+      (res)=>{
+          this.alerta("Productos filtrados","Aceptar")
+          this.productos=res
+      },
+      (err)=>{
+        if(err.error.text=="No hay productos registrados"){
+          this.alerta("No hay productos que coincidan","Aceptar")
+        }else{
+          this.alerta("Error al filtrar productos","Aceptar")
+          console.log(err)
+        }
+      }
+    )
+  }
+
   vaciar(){
     this.producto.idProducto=""
     this.producto.nombre= ""
@@ -187,6 +206,8 @@ export class ProductoComponent {
     this.producto.ultimoSurtido= ""
     this.producto.estado= ""
     this.producto.img= ""
+    this.producto.estadoProd=""
+
     var input = document.getElementById('imagen') as HTMLInputElement | null;
     if(input!=null){
       input.value=""
