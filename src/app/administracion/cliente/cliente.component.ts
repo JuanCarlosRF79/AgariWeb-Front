@@ -90,6 +90,8 @@ export class ClienteComponent {
         this.alerta("Error al buscar cliente","Aceptar")
       }
     )
+   }else if(this.cliente.estado!=""){
+    this.filtrarCli() 
    }else{
     this.alerta("Ingresa un código o nombre y apellido","Aceptar")
    } 
@@ -178,6 +180,23 @@ export class ClienteComponent {
   }else{
     this.alerta("Por favor llena todos los campos","Aceptar")
   }
+  }
+
+  filtrarCli(){
+    this.clienteServ.filtrarCli(this.cliente).subscribe(
+      (res)=>{
+        this.alerta("Clientes filtrados","Aceptar")
+        this.clientes=res
+      },
+      (err)=>{
+        if(err.error.text=="No hay clientes registrados"){
+          this.alerta("No hay clientes que coincidan","Aceptar")  
+        }else{
+          this.alerta("Error al filtrar clientes","Aceptar")
+          console.log(err)
+        }
+      }
+    )
   }
 
   vaciar(){

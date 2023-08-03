@@ -27,6 +27,10 @@ export class ClienteService {
     return this.http.post<any>(this.url+"/borrar",cliente);
   }
 
+  filtrarCli(cliente:object){
+    return this.http.post<any>(this.url+"/filtrar",cliente);
+  }
+
   todoCli(){
     return this.http.get<any>(this.url);
   }
