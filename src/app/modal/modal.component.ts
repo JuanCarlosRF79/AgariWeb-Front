@@ -105,30 +105,6 @@ export class ModalComponent{
     );
   }
 
-  modificarServ(){
-    if(this.servicio.idServicio!=""){
-      if(this.servicio.fechaFinalizado==null){
-        this.servicio.fechaFinalizado=""
-      }
-
-      this.servicioSev.modificarServ(this.servicio).subscribe(
-        (res)=>{
-          if(res[0].affectado>0){
-            this.alerta("Servicio modificado","Aceptar")
-            this.consultarServ()
-          }
-        },
-        (err)=>{
-          this.alerta("Error al modificar servicio","Aceptar")
-          console.log(err)
-        }
-      )
-    }else{
-      this.alerta("Ingresa un código de servicio","Aceptar")
-    }
-
-  }
-
   buscarServ(idServicio:any){
     this.servicio.idServicio=idServicio
     this.servicioSev.consultarServ(this.servicio).subscribe(
@@ -159,39 +135,6 @@ export class ModalComponent{
     alert(this.idServicio+"")
   }
 
-  consultarServ(){
-    if(this.servicio.idServicio!=""){
-      this.servicioSev.consultarServ(this.servicio).subscribe(
-        (res)=>{
-          this.servicios=[]
-          this.servicios.push(res[0])
-
-          this.servicio=res[0];
-          
-          var fechas = res[0].fechaOrden.split("T")
-          this.servicio.fechaOrden = fechas[0]
-
-          if(res[0].proximaCita!=null){
-            fechas=res[0].proximaCita.split("T")
-            this.servicio.proximaCita = fechas[0]
-          }
-
-          if(res[0].fechaFinalizado!=null){
-            fechas=res[0].fechaFinalizado.split("T")
-            this.servicio.fechaFinalizado = fechas[0]
-          }
-
-        },(err)=>{
-          this.alerta("Error al buscar servicio","Aceptar")
-          alert(err.error)
-          console.log(err)
-        }
-      );
-    }else{
-      this.alerta("Ingresa un código de servicio","Aceptar")
-    }
-  }
-
   eliminarServ(){
     if(this.servicio.idServicio!=""){
       if(this.servicio.pagoServicio=="300" && this.servicio.estadoServicio=="Solicitado"){
@@ -202,7 +145,7 @@ export class ModalComponent{
         (res)=>{
           if(res>0){
             this.alerta("Servicio cancelado","Aceptar")
-            this.consultarServ()
+            this.onCloseModal()
           }
         },
         (err)=>{
@@ -214,6 +157,45 @@ export class ModalComponent{
       this.alerta("Ingresa un código de servicio","Aceptar")
     }
   }
+
+  completarServ(){
+    this.servicioSev.completarServ(this.servicio).subscribe(
+      (res)=>{
+
+        if(res>0){
+          this.alerta("Servicio completado","Aceptar")
+          this.onCloseModal()
+        }
+      },
+      (err)=>{
+
+        this.alerta("Error al completar servicio","Aceptar")
+        console.log(err)
+      }
+    )
+  }
+
+  confirmarServ(){
+    if(this.servicio.pagoServicio!=""&&this.servicio.proximaCita!=""){
+      this.servicioSev.confirmarServ(this.servicio).subscribe(
+        (res)=>{
+          if(res>0){
+            this.alerta("Servicio agendado","Aceptar")
+            this.onCloseModal()
+          }
+        },
+        (err)=>{
+
+          this.alerta("Error al agendar servicio","Aceptar")
+          console.log(err)
+        }
+      )
+    }else{
+      this.alerta("Por favor llena todos los campos","Aceptar")
+    }
+  }
+
+  
 
   vaciar(){
     this.servicio.idServicio=""

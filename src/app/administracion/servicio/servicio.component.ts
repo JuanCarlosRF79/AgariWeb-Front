@@ -141,6 +141,9 @@ export class ServicioComponent {
       if(this.servicio.fechaFinalizado==null){
         this.servicio.fechaFinalizado=""
       }
+      if(this.servicio.proximaCita==null){
+        this.servicio.proximaCita=""
+      }
 
       this.servicioSev.modificarServ(this.servicio).subscribe(
         (res)=>{

@@ -57,7 +57,11 @@ export class ServicioService {
   }
 
   confirmarServ(servicio:object){
-    return this.http.put<any>(this.url+"/confirmar",servicio)
+    return this.http.post<any>(this.url+"/confirmar",servicio)
+  }
+
+  completarServ(servicio:object){
+    return this.http.post<any>(this.url+"/completar",servicio)
   }
 
   eliminarServ(servicio:object){

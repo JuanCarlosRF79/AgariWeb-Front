@@ -25,6 +25,8 @@
                   <hr style="background: rgb(11, 198, 245); height: 5px;">
 
                   <h5>Información del servicio </h5>
+                  
+                  <input [(ngModel)]="servicio.idServicio" [ngModelOptions]="{standalone: true}" type="hidden">
 
                   <div class="row justify-content-md-center mb-2">
                     <div class="input-group mb-auto">
@@ -58,9 +60,9 @@
                       <div class="col-md-auto">
                   <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                   <div class="btn-group me-2" role="group" aria-label="First group">
-                    <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" (click)="modificarServ()" value="Confirmar">
-                    <input id="submit" type="button" name="btn-operacion" class="btn btn-success" (click)="eliminarServ()" value="Completar">
-                    <input id="submit" type="submit" name="btn-operacion" class="btn btn-danger"(click)="onCloseModal()" value="Cancelar">
+                    <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" (click)="confirmarServ()" value="Agendar cita">
+                    <input id="submit" type="button" name="btn-operacion" class="btn btn-success" (click)="completarServ()" value="Completar">
+                    <input id="submit" type="submit" name="btn-operacion" class="btn btn-danger"(click)="eliminarServ()" value="Cancelar">
                   </div>
                 </div>
               </div>
