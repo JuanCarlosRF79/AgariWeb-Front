@@ -61,32 +61,6 @@ filtro={
   fechaFiltro:""
 }
 
-servicio={
-  idServicio:"",
-  idCliente:"",
-  nombreEmp:"",
-  apellidoPatEmp:"",
-  telefono:"",
-  estado: "Jalisco",
-  ciudad: "",
-  calle : "",
-  colonia : "",
-  descripcionDireccion : "",
-  descripcionProblema : "",
-  fechaOrden : "",
-  estadoServicio : "",
-  fechaFinalizado :  "",
-  proximaCita :  "",
-  pagoServicio : "",
-
-  descDire:"",
-  descProb:"",
-  pago:"",
-  municipio:"",
-  costo:""
-
-}
-
 buscarServ(idServicio:any){
   this.servicioSev.setIdServicio(idServicio)
   this.servicioSev.sendClickEvent(idServicio)
@@ -131,22 +105,6 @@ filtrarServ(){
 }
 
 vaciar(){
-  this.servicio.idServicio=""
-  this.servicio.idCliente=""
-  this.servicio.nombreEmp=""
-  this.servicio.apellidoPatEmp=""
-  this.servicio.telefono=""
-  this.servicio.ciudad= ""
-  this.servicio.calle = ""
-  this.servicio.colonia = ""
-  this.servicio.descripcionDireccion = ""
-  this.servicio.descripcionProblema = ""
-  this.servicio.fechaOrden = ""
-  this.servicio.estadoServicio = ""
-  this.servicio.fechaFinalizado =  ""
-  this.servicio.proximaCita =  ""
-  this.servicio.pagoServicio = ""
-
   this.filtro.estadoServicio=""
   this.filtro.fechaFiltro=""
   this.selected=null
