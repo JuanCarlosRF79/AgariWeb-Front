@@ -9,6 +9,8 @@ export class LoginService {
 
   //Ruta de conexión
   private url="http://localhost:3000/usuario/iniciarsesion";
+  //private url="http://192.168.0.65:3000/usuario/iniciarsesion";
+  
 
   constructor(private http:HttpClient,
     private router:Router) { }

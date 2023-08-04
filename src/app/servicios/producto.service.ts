@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class ProductoService {
 
   private url="http://localhost:3000/producto";
+  //private url="http://192.168.0.65:3000/producto";
 
   constructor(private http:HttpClient) { }
 

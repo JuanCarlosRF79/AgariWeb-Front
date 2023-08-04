@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { UsuarioService } from './usuario.service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 export class EmpleadoService {
 
   private url="http://localhost:3000/empleado";
+  //private url="http://192.168.0.65:3000/empleado";
 
   constructor(private http:HttpClient) { }
 
