@@ -38,4 +38,8 @@ export class ProductoService {
     return this.http.post<any>(this.url+"/filtrar",producto);
   }
 
+  graficaProd(){
+    return this.http.get<any>(this.url+"/grafica");
+  }
+
 }

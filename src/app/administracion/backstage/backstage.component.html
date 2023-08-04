@@ -9,14 +9,14 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <h3 align="center">Servicios para hoy</h3>
+                    <h2 align="center">Servicios para hoy</h2>
                     <br>
                 </div>
             </div>
             <div class="row justify-content-md-center">
                 <div class="col-4" *ngFor="let serv of servicios" >
                     <div class="container shadow p-2 mb-5 bg-white rounded">
-                        <div class="row">
+                        <div class="row mb-3">
                             <div class="col-7">
                                 <h4>Servicio {{serv.estadoServicio}}</h4>
                             </div>
@@ -44,6 +44,36 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <h2 align="center">Reportes</h2>
+                    <br>
+                </div>
+
+                <div class="row">
+
+                    <div class="container col-12 mb-5">
+                        <div class="row mb-2">
+                            <h5 align="center">Población de productos</h5>
+                        </div>
+                        <div class="row">
+                            <div id="chartdivProd" style="width: 100%; height: 500px"></div>
+                        </div>
+                    </div>
+
+                    <div class="container col-12">
+                        <div class="row mb-2">
+                            <h5 align="center">Comparación de servicios</h5>
+                        </div>
+                        <div class="row">
+                            <div id="chartdivServ" style="width: 100%; height: 500px"></div>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
 
         </div>
