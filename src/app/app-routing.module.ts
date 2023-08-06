@@ -32,7 +32,7 @@ const routes: Routes = [
   {path: 'administracion/ticket', component:TicketComponent},
   {path: 'administracion/calendario', component:CalendarioComponent},
   //Reedirigir rutas inexistente a inicio
-  {path:"**", redirectTo:"inicio"}
+  {path:"**", redirectTo:"login"}
 ];
 
 @NgModule({

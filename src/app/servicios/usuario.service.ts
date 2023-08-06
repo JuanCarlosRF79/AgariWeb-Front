@@ -4,10 +4,22 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UsuarioService {
-  ipServer="192.168.0.65:3000"
   constructor() { }
 
-  getip(){
-    return this.ipServer
+  setInicio(usuario:string){
+    localStorage.clear()
+    localStorage.setItem("Usuario",usuario)
   }
+
+  getInicio(){
+    if(localStorage.getItem("Usuario")!=null){
+      return true
+    }
+    return false
+  }
+
+  limpiarUsuario(){
+    localStorage.clear()
+  }
+
 }

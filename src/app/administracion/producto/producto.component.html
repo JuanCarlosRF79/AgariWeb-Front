@@ -139,7 +139,7 @@
               <div class="input-group-prepend w-25">
               </div>
               <img *ngIf="producto.img!=null && producto.img!=''" src="data:image/jpg;base64, {{ producto.img }}" alt="" width="350px" height="250px">
-              <img *ngIf="producto.img==null || producto.img=='' " src="https://www.lg.com/mx/images/lavadoras-y-secadoras/md07547461/Gallery/D_11.jpg" alt="" width="350px" height="250px">
+              <img *ngIf="producto.img==null || producto.img=='' " src="./assets/img/imagenVacio.jpg" alt="" width="350px" height="250px">
             </div>
           </div>
   
@@ -181,7 +181,7 @@
                       <hr style="background: rgb(11, 198, 245); height: 5px;">
                     </div>
                     <div class="col-4">
-                       <div *ngIf="prod.img==null"><img src="https://www.lg.com/mx/images/lavadoras-y-secadoras/md07547461/Gallery/D_11.jpg" width="auto" height="150px"></div>
+                       <div *ngIf="prod.img==null"><img src="./assets/img/imagenVacio.jpg" width="auto" height="150px"></div>
                        <div *ngIf="prod.img!=null"><img src="data:image/png;base64, {{prod.img}}" width="auto" height="150px"></div>
                     </div>
                     <div class="col-8">

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { UsuarioService } from 'src/app/servicios/usuario.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu-bs',
@@ -6,7 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./menu-bs.component.css']
 })
 export class MenuBsComponent {
+
+  constructor(private usuarioServ:UsuarioService, private router:Router){}
+
   ngOnInit(){
+    this.verificarUsuario()
     let sidebar = document.querySelector(".sidebar");
     let closeBtn = document.querySelector("#btn");
     let searchBtn = document.querySelector(".bx-search");
@@ -30,4 +36,16 @@ export class MenuBsComponent {
       }
     }
   }
+
+  cerrarSesion(){
+    this.usuarioServ.limpiarUsuario()
+    this.router.navigate(["/login"])
+  }
+
+  verificarUsuario(){
+   if(!this.usuarioServ.getInicio()){
+    this.router.navigate(["/login"])
+   }
+  }
+
 }
