@@ -109,7 +109,7 @@ export class ServicioComponent {
 
   insertarServ(){
     if(this.servicio.descripcionDireccion!=""&&this.servicio.descripcionProblema!=""
-    &&this.servicio.idCliente!=""&&this.servicio.idServicio!=""){
+    &&this.servicio.idCliente!=""){
 
       this.servicio.descDire=this.servicio.descripcionDireccion
       this.servicio.descProb=this.servicio.descripcionProblema

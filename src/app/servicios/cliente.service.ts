@@ -7,8 +7,8 @@ import { HttpClient } from '@angular/common/http';
 export class ClienteService {
 
   //private url="http://192.168.0.106:3000/clientes";
-  private url="http://localhost:3000/cliente";
-  //private url="http://192.168.0.65:3000/clientes";
+  //private url="http://localhost:3000/cliente";
+  private url="http://agari.mx:3000/cliente";
 
   constructor(private http:HttpClient) { }
 

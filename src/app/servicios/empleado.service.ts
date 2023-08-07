@@ -7,8 +7,8 @@ import { UsuarioService } from './usuario.service';
 })
 export class EmpleadoService {
 
-  private url="http://localhost:3000/empleado";
-  //private url="http://192.168.0.65:3000/empleado";
+  //private url="http://localhost:3000/empleado";
+  private url="http://agari.mx:3000/empleado";
 
   constructor(private http:HttpClient) { }
 

@@ -7,8 +7,8 @@ import { Subject, Observable } from 'rxjs';
 })
 export class ServicioService {
 
-  private url="http://localhost:3000/servicio";
-  //private url="http://192.168.0.65:3000/producto";
+  //private url="http://localhost:3000/servicio";
+  private url="http://agari.mx:3000/servicio";
 
 
   private idServicio:any;
