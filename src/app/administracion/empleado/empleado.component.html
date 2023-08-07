@@ -14,15 +14,15 @@
           <div class="row justify-content-md-center mb-2">
             <div class="input-group mb-auto">
               <div class="input-group-prepend w-25">
-                <span class="input-group-text bg-dark">Código de empleado: </span>
+                <span class="input-group-text bg-dark">Código empleado: </span>
               </div>
-              <input class="form-control" id="nombre_emp" maxlength="100" type="text" placeholder="Nombre del empleado" [(ngModel)]="empleado.idEmpleado" [ngModelOptions]="{standalone: true}">
+              <input class="form-control" id="nombre_emp" maxlength="100" type="text" placeholder="Código del empleado" [(ngModel)]="empleado.idEmpleado" [ngModelOptions]="{standalone: true}">
             </div>
           </div>
           <div class="row justify-content-md-center mb-2">
             <div class="input-group mb-auto">
               <div class="input-group-prepend w-25">
-                <span class="input-group-text bg-dark">Nombre: </span>
+                <span class="input-group-text bg-dark">Nombre empleado: </span>
               </div>
               <input class="form-control" id="nombre_emp" maxlength="100" type="text" placeholder="Nombre del empleado" [(ngModel)]="empleado.nombre_emp" [ngModelOptions]="{standalone: true}">
             </div>
@@ -30,17 +30,10 @@
           <div class="row justify-content-md-center mb-2">
             <div class="input-group mb-auto">
               <div class="input-group-prepend w-25">
-                <span class="input-group-text bg-dark">Apellido paterno: </span>
+                <span class="input-group-text bg-dark">Apellidos: </span>
               </div>
-              <input class="form-control" id="apellidoPat_emp" maxlength="100" type="text" placeholder="Apellido del empleado" [(ngModel)]="empleado.apellidoPatEmp" [ngModelOptions]="{standalone: true}">
-            </div>
-          </div>
-          <div class="row justify-content-md-center mb-2">
-            <div class="input-group mb-auto">
-              <div class="input-group-prepend w-25">
-                <span class="input-group-text bg-dark">Apellido materno: </span>
-              </div>
-              <input class="form-control" id="apellidoMat_emp" maxlength="100" type="text" placeholder="Apellido del empleado" [(ngModel)]="empleado.apellidoMatEmp" [ngModelOptions]="{standalone: true}">
+              <input class="form-control" id="apellidoPat_emp" maxlength="100" type="text" placeholder="Apellido del empleado" [(ngModel)]="empleado.apellidoPat_emp" [ngModelOptions]="{standalone: true}">
+              <input class="form-control" id="apellidoMat_emp" maxlength="100" type="text" placeholder="Apellido del empleado" [(ngModel)]="empleado.apellidoMat_emp" [ngModelOptions]="{standalone: true}">
             </div>
           </div>
           <div class="row justify-content-md-center mb-2">
@@ -50,10 +43,10 @@
               </div>
               <select name="puesto" id="puesto" class="form-select" [(ngModel)]="empleado.puesto" [ngModelOptions]="{standalone: true}">
                 <option value="" selected>Seleccione uno</option>
-                <option value="Secretario">Secretario</option>
-                <option value="Técnico">Técnico</option>
-                <option value="Almacenista">Almacenista</option>
-                <option value="Gerente">Gerente</option>
+                <option value="1">Secretario</option>
+                <option value="2">Técnico</option>
+                <option value="3">Almacenista</option>
+                <option value="4">Supervisor</option>
               </select>
             </div>
           </div>
@@ -83,8 +76,8 @@
           </div>
           <div class="row justify-content-md-center mb-2">
             <div class="input-group mb-auto">
-              <div class="input-group-prepend w-auto">
-                <span class="input-group-text bg-dark">Fecha de nacimiento: </span>
+              <div class="input-group-prepend w-25">
+                <span class="input-group-text bg-dark">Fecha nacimiento: </span>
               </div>
               <input class="form-control" id="fechaNac" type="date" [(ngModel)]="empleado.fechaNac" [ngModelOptions]="{standalone: true}">
             </div>
@@ -99,8 +92,8 @@
           </div>
           <div class="row justify-content-md-center mb-2">
             <div class="input-group mb-auto">
-              <div class="input-group-prepend w-auto">
-                <span class="input-group-text bg-dark">Ingreso a la empresa: </span>
+              <div class="input-group-prepend w-25">
+                <span class="input-group-text bg-dark">Ingreso empresa: </span>
               </div>
               <input class="form-control" id="ingresoEmpre" type="date" [(ngModel)]="empleado.ingresoEmpresa" [ngModelOptions]="{standalone: true}">
             </div>
@@ -113,12 +106,21 @@
               <input class="form-control" id="rfc" maxlength="13" type="text" placeholder="RFC del empleado" [(ngModel)]="empleado.rfc" [ngModelOptions]="{standalone: true}">
             </div>
           </div>
+          <div class="input-group mb-2">
+            <div class="input-group-prepend w-25">
+              <span class="input-group-text bg-dark">Municipio/ciudad :</span>
+            </div>
+            <select class="form-select" [(ngModel)]="empleado.ciudad" [ngModelOptions]="{standalone: true}">
+              <option value="" selected>Seleccionar municipio</option>
+              <option *ngFor="let mun of municipios" value="{{mun}}" selected>{{mun}}</option>
+            </select>
+          </div>
           <div class="row justify-content-md-center mb-2">
             <div class="input-group mb-auto">
               <div class="input-group-prepend w-25">
                 <span class="input-group-text bg-dark">Dirección calle: </span>
               </div>
-              <input class="form-control" id="direccionCalle" maxlength="255" type="text" placeholder="Dirección calle del empleado" [(ngModel)]="empleado.direccionCalle" [ngModelOptions]="{standalone: true}">
+              <input class="form-control" id="direccionCalle" maxlength="255" type="text" placeholder="Dirección calle del empleado" [(ngModel)]="empleado.calle" [ngModelOptions]="{standalone: true}">
             </div>
           </div>
           <div class="row justify-content-md-center mb-2">
@@ -126,7 +128,7 @@
               <div class="input-group-prepend w-25">
                 <span class="input-group-text bg-dark">Dirección colonia: </span>
               </div>
-              <input class="form-control" id="direccionColonia" maxlength="255" type="text" placeholder="Dirección colonia del empleado" [(ngModel)]="empleado.direccionColonia" [ngModelOptions]="{standalone: true}">
+              <input class="form-control" id="direccionColonia" maxlength="255" type="text" placeholder="Dirección colonia del empleado" [(ngModel)]="empleado.colonia" [ngModelOptions]="{standalone: true}">
             </div>
           </div>
           <div class="row justify-content-md-center mb-2">
@@ -142,7 +144,7 @@
               <div class="input-group-prepend w-25">
                 <span class="input-group-text bg-dark">Email: </span>
               </div>
-              <input class="form-control" id="email" type="email" placeholder="Correo electrónico del empleado" [(ngModel)]="empleado.correo" [ngModelOptions]="{standalone: true}">
+              <input class="form-control" id="email" type="email" placeholder="Correo electrónico del empleado" [(ngModel)]="empleado.email" [ngModelOptions]="{standalone: true}">
             </div>
           </div>
           <div class="row justify-content-md-center mb-2">
@@ -150,13 +152,13 @@
               <div class="input-group-prepend w-25">
                 <span class="input-group-text bg-dark">Contraseña: </span>
               </div>
-              <input class="form-control" id="contrasenia" type="password" placeholder="Contraseña de la cuenta del empleado" [(ngModel)]="empleado.password" [ngModelOptions]="{standalone: true}">
+              <input class="form-control" id="contrasenia" type="password" placeholder="Contraseña de la cuenta del empleado" [(ngModel)]="empleado.contrasenia" [ngModelOptions]="{standalone: true}">
             </div>
           </div>
           <div class="row justify-content-md-center mb-2">
             <div class="input-group mb-auto">
-              <div class="input-group-prepend w-auto">
-                <span class="input-group-text bg-dark">Estado del empleado: </span>
+              <div class="input-group-prepend w-25">
+                <span class="input-group-text bg-dark">Estado empleado: </span>
               </div>
               <select name="estado" id="estado" class="form-select" [(ngModel)]="empleado.estado" [ngModelOptions]="{standalone: true}">
                 <option value="" selected>Seleccione uno</option>

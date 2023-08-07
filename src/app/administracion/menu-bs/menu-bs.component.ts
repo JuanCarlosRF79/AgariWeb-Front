@@ -12,7 +12,7 @@ export class MenuBsComponent {
   constructor(private usuarioServ:UsuarioService, private router:Router){}
 
   ngOnInit(){
-    this.verificarUsuario()
+    //this.verificarUsuario()
     let sidebar = document.querySelector(".sidebar");
     let closeBtn = document.querySelector("#btn");
     let searchBtn = document.querySelector(".bx-search");
