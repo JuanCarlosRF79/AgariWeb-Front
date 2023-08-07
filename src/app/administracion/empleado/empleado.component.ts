@@ -9,6 +9,13 @@ import { EmpleadoService } from 'src/app/servicios/empleado.service';
 })
 export class EmpleadoComponent {
 
+  constructor(private empleadoServ:EmpleadoService, private snackBar:MatSnackBar) {}
+
+  ngOnInit():void{
+    this.todoEmp()
+  }
+
+
   municipios=[
     "Acatic", "Acatlan de Juarez", "Ahualulco de Mercado", "Amacueca", "Amatitan",
     "Ameca", "Arandas", "Atemajac de Brizuela", "Atengo", "Atenguillo",
@@ -62,16 +69,10 @@ export class EmpleadoComponent {
 
   empleados:any
 
-  constructor(private empleadoServ:EmpleadoService, private snackBar:MatSnackBar) {}
-
-  ngOnInit():void{
-    this.todoEmp()
-  }
-
   todoEmp(){
     this.empleadoServ.todoEmp().subscribe(
       (res)=>{
-        this.empleados=res[0]
+        this.empleados=res
       },
       (err)=>{
         console.log(err)
@@ -97,6 +98,44 @@ export class EmpleadoComponent {
     }else{
       this.alerta("Por favor llenar todos los campos","Aceptar")
     }
+  }
+
+  consultarEmp(codigo:any){
+    this.empleado.idEmpleado=codigo
+    this.empleadoServ.consultarEmp(this.empleado).subscribe(
+      (res)=>{
+        this.empleado=res
+        this.empleado.fechaNac=this.formatoFecha(this.empleado.fechaNac)
+      },
+      (err)=>{
+        console.log(err)
+        this.alerta("Error al buscar empleado", "Aceptar")
+      }
+    )
+  }
+
+  vaciar(){
+    this.empleado.idEmpleado=""
+    this.empleado.nombre_emp= ""
+    this.empleado.apellidoPat_emp= ""
+    this.empleado.apellidoMat_emp= ""
+    this.empleado.puesto=""
+    this.empleado.sexo= ""
+    this.empleado.turno=""
+    this.empleado.fechaNac= ""
+    this.empleado.rfc= ""
+    this.empleado.ciudad=""
+    this.empleado.calle= ""
+    this.empleado.colonia= ""
+    this.empleado.telefono= ""
+    this.empleado.email= ""
+    this.empleado.estado= ""
+    this.empleado.contrasenia= ""
+   }
+
+  limpiar(){
+    this.vaciar()
+    this.todoEmp()
   }
 
 

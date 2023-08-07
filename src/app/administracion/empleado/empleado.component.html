@@ -183,7 +183,7 @@
           <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" value="Modificar">
           <input id="submit" type="button" name="btn-operacion" (click)="buscarEmp()" class="btn btn-primary" value="Buscar">
           <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" value="Eliminar">
-          <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" value="Limpiar">
+          <input id="submit" type="button" name="btn-operacion" (click)="limpiar()" class="btn btn-primary" value="Limpiar">
               </div>
             </div>
           </div>
@@ -199,37 +199,37 @@
         </div>
         <br><br>
 
-        <div class="container" style="padding-left: 70px;">
-          <div class="row justify-content-md-center">
-            <div class="col-6">
+        <div class="container" style="padding-left: 70px; padding-bottom: 20px;">
+          <div class="row justify-content-md-center" style="overflow-y: auto;
+          height: 500px;">
+            <div class="col-6" *ngFor="let emp of empleados">
                 <div class="container shadow p-2 mb-5 bg-white rounded">
                     <div class="row">
                         <div class="col-7">
-                            <h4>Jose Gómez Pérez #1</h4>
+                            <div *ngIf="emp.estado=='Activo'" ><h4>{{emp.nombre_emp}} {{emp.apellidoPat_emp}} #{{emp.idEmpleado}}</h4></div>
+                            <div *ngIf="emp.estado=='De baja'"><h4 style="color: rgb(172, 7, 7);">{{emp.nombre_emp}} {{emp.apellidoPat_emp}} #{{emp.idEmpleado}}</h4></div>
                         </div>
                         <div class="col-5" align="right">
-                            <a style="text-decoration:none;" routerLink="../servicio">Modificar <i class='bx bxs-edit-alt'></i></a>
+                            <a style="text-decoration:none;" routerLink="../empleado" (click)="consultarEmp(emp.idEmpleado)"><h6>Modificar <i class='bx bxs-edit-alt'></i></h6></a>
                         </div>
                         <div class="col-7">
-                            <i class='bx bxs-id-card' ></i> Empleado<br>
-                            <i class='bx bx-male-female' ></i> Masculino<br>
-                            <i class='bx bx-time' ></i> Vespertino<br>
-                            <i class='bx bx-calendar' ></i> 02/09/2001
+                            <i class='bx bx-male-female' ></i> {{emp.sexo}}<br>
+                           <i class='bx bx-calendar' ></i> {{ formatoFecha(emp.fechaNac) }}
                         </div>
                         <div class="col-5" align="right">
-                          $10,000 <i class='bx bx-money' ></i><br>
-                          15/06/2020 <i class='bx bx-calendar-check' ></i><br>
-                          HECJ0109025H2S <i class='bx bxs-file'></i> 
+                          {{ emp.rfc }} <i class='bx bxs-file' ></i>
                         </div>
                         <div class="col-12">
                             <hr style="background: rgb(11, 198, 245); height: 5px;">
                         </div>
                         <div class="col">
-                            <i class='bx bxs-directions'></i> Colonia, Calle 2030 
+                          <i class='bx bxs-city'></i> {{emp.ciudad}} <br>
+                          <i class='bx bxs-directions'></i> {{emp.colonia}},<br> 
+                          {{ emp.calle }} 
                         </div>
                         <div class="col-5" align="right">
-                          3329688602 <i class='bx bxs-phone' ></i><br>
-                          JavierHC@hotmail.com <i class='bx bxs-envelope' ></i>
+                          {{ formatoTelefono(emp.telefono) }} <i class='bx bxs-phone' ></i><br>
+                          {{ emp.email }} <i class='bx bxs-envelope' ></i>
                         </div>
                     </div>
                 </div>
