@@ -145,6 +145,7 @@ export class ModalComponent{
         (res)=>{
           if(res>0){
             this.alerta("Servicio cancelado","Aceptar")
+            this.servicioSev.senActualizar("a")
             this.onCloseModal()
           }
         },
@@ -164,6 +165,7 @@ export class ModalComponent{
 
         if(res>0){
           this.alerta("Servicio completado","Aceptar")
+          this.servicioSev.senActualizar("a")
           this.onCloseModal()
         }
       },
@@ -181,6 +183,7 @@ export class ModalComponent{
         (res)=>{
           if(res>0){
             this.alerta("Servicio agendado","Aceptar")
+            this.servicioSev.senActualizar("a")
             this.onCloseModal()
           }
         },

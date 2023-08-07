@@ -27,6 +27,14 @@ export class ServicioService {
     return this.subject.asObservable();
   }
 
+  getActualizar(): Observable<any>{ 
+    return this.subject.asObservable();
+  }
+
+  senActualizar(idServicio: any) {
+    this.subject.next(idServicio);
+  }
+
   setIdServicio(codigoServ:any){
     this.idServicio=codigoServ
   }

@@ -19,6 +19,13 @@ export class CalendarioComponent {
       this.dateAdapter.setLocale('mx')
       this.selected = null;
   }
+
+  clickEventsubscription=this.servicioSev.getActualizar().subscribe(
+    ()=>{
+      this.todoServ()
+    }
+  )
+  
   ngOnInit(): void {
     this.todoServ()
   }
