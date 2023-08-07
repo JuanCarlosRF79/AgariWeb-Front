@@ -29,7 +29,11 @@ export class EmpleadoService {
   }
 
   eliminarEmp(empleado:object){
-    return this.http.post<any>(this.url+"/borrar",empleado);
+    return this.http.post<any>(this.url+"/eliminar",empleado);
+  }
+
+  filtrarEmp(empleado:object){
+    return this.http.post<any>(this.url+"/estado",empleado);
   }
 
   todoEmp(){

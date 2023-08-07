@@ -85,7 +85,10 @@ export class EmpleadoComponent {
     if(this.verificarEmp()){
     this.empleadoServ.consultarEmp(this.empleado).subscribe(
       (res) => {
-        console.log(res);
+
+        this.empleados=[]
+        this.empleados.push(res[0])
+
         this.empleado = res[0];
         this.empleado.fechaNac=this.formatoFecha(res[0].fechaNac)
         this.empleado.ingresoEmpresa=this.formatoFecha(res[0].ingresoEmpresa)
@@ -95,8 +98,10 @@ export class EmpleadoComponent {
         this.alerta("Error al buscar empleado","Aceptar")
       }
     );
+    }else if(this.empleado.estado!=""){
+      this.filtrarEmpleado()
     }else{
-      this.alerta("Por favor llenar todos los campos","Aceptar")
+      this.alerta("Por favor ingresa un código o nombre","Aceptar")
     }
   }
 
@@ -104,8 +109,9 @@ export class EmpleadoComponent {
     this.empleado.idEmpleado=codigo
     this.empleadoServ.consultarEmp(this.empleado).subscribe(
       (res)=>{
-        this.empleado=res
+        this.empleado=res[0]
         this.empleado.fechaNac=this.formatoFecha(this.empleado.fechaNac)
+        this.empleado.ingresoEmpresa=this.formatoFecha(this.empleado.ingresoEmpresa)
       },
       (err)=>{
         console.log(err)
@@ -114,23 +120,90 @@ export class EmpleadoComponent {
     )
   }
 
+  insertarEmpleado(){
+    if(this.empleado.nombre_emp!= "" && this.empleado.apellidoPat_emp!= ""&&
+    this.empleado.apellidoMat_emp!= "" && this.empleado.puesto!= "" && this.empleado.sexo!= "" && this.empleado.turno!= ""&&
+    this.empleado.fechaNac!= "" && this.empleado.salario!= "" && this.empleado.ingresoEmpresa!= ""&&
+    this.empleado.rfc!= "" && this.empleado.ciudad!="" && this.empleado.calle!= "" && this.empleado.colonia!= ""&&
+    this.empleado.telefono!= "" && this.empleado.email!= "" && this.empleado.contrasenia!= ""){
+
+      this.empleadoServ.insertarEmp(this.empleado).subscribe(
+        (res)=>{
+          if(res[0].idEmpleado>0){
+            this.empleado.idEmpleado=res[0].idEmpleado
+            this.buscarEmp()
+            this.alerta("Empleado registrado","Aceptar")
+          }
+        },
+        (err)=>{
+          this.alerta("Error al insertar empleado","Aceptar")
+          console.log(err)
+        }
+      )
+
+    }else{
+      this.alerta("Por favor llena todos los campos","Aceptar")
+    }
+  }
+
+
+  eliminarEmp(){
+    if(this.empleado.idEmpleado!=""){
+      this.empleadoServ.eliminarEmp(this.empleado).subscribe(
+        (res)=>{
+          if(res>0){
+            this.alerta("Empleado eliminado","Aceptar")
+            this.buscarEmp()
+          }
+        },
+        (err)=>{
+          this.alerta("Error al eliminar empleado","Aceptar")
+          console.log(err)
+        }
+      )
+    }else{
+      this.alerta("Por favor llena todos los campos","Aceptar")
+    }
+  }
+
+  filtrarEmpleado(){
+    this.empleadoServ.filtrarEmp(this.empleado).subscribe(
+      (res)=>{
+        console.log(res)
+        this.empleados=res
+        this.alerta("Empleados filtrados","Aceptar")
+      },
+      (err)=>{
+        if(err.error=="No hay empleados registrados"){
+          this.alerta("No hay empleados que coincidan","Aceptar")
+          this.empleados=[]
+        }else{
+          this.alerta("Error al filtrar empleados","Aceptar")
+          console.log(err)
+        }
+      }
+    )
+  }
+
   vaciar(){
-    this.empleado.idEmpleado=""
-    this.empleado.nombre_emp= ""
-    this.empleado.apellidoPat_emp= ""
-    this.empleado.apellidoMat_emp= ""
-    this.empleado.puesto=""
-    this.empleado.sexo= ""
-    this.empleado.turno=""
-    this.empleado.fechaNac= ""
-    this.empleado.rfc= ""
-    this.empleado.ciudad=""
-    this.empleado.calle= ""
-    this.empleado.colonia= ""
-    this.empleado.telefono= ""
-    this.empleado.email= ""
-    this.empleado.estado= ""
-    this.empleado.contrasenia= ""
+   this.empleado.idEmpleado= "",
+   this.empleado.nombre_emp= "",
+   this.empleado.apellidoPat_emp= "",
+   this.empleado.apellidoMat_emp= "",
+   this.empleado.puesto= "",
+   this.empleado.sexo= "",
+   this.empleado.turno= "",
+   this.empleado.fechaNac= "",
+   this.empleado.salario= "",
+   this.empleado.ingresoEmpresa= "",
+   this.empleado.rfc= "",
+   this.empleado.ciudad="",
+   this.empleado.calle= "",
+   this.empleado.colonia= "",
+   this.empleado.telefono= "",
+   this.empleado.email= "",
+   this.empleado.contrasenia= "",
+   this.empleado.estado= ""
    }
 
   limpiar(){

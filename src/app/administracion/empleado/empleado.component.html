@@ -16,7 +16,7 @@
               <div class="input-group-prepend w-25">
                 <span class="input-group-text bg-dark">Código empleado: </span>
               </div>
-              <input class="form-control" id="nombre_emp" maxlength="100" type="text" placeholder="Código del empleado" [(ngModel)]="empleado.idEmpleado" [ngModelOptions]="{standalone: true}">
+              <input class="form-control" maxlength="100" type="text" placeholder="Código del empleado" [(ngModel)]="empleado.idEmpleado" [ngModelOptions]="{standalone: true}">
             </div>
           </div>
           <div class="row justify-content-md-center mb-2">
@@ -24,7 +24,7 @@
               <div class="input-group-prepend w-25">
                 <span class="input-group-text bg-dark">Nombre empleado: </span>
               </div>
-              <input class="form-control" id="nombre_emp" maxlength="100" type="text" placeholder="Nombre del empleado" [(ngModel)]="empleado.nombre_emp" [ngModelOptions]="{standalone: true}">
+              <input class="form-control"  maxlength="100" type="text" placeholder="Nombre del empleado" [(ngModel)]="empleado.nombre_emp" [ngModelOptions]="{standalone: true}">
             </div>
           </div>
           <div class="row justify-content-md-center mb-2">
@@ -179,22 +179,14 @@
     <div class="col-md-auto">
       <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
         <div class="btn-group me-2" role="group" aria-label="First group">
-          <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" value="Guardar">
-          <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" value="Modificar">
-          <input id="submit" type="button" name="btn-operacion" (click)="buscarEmp()" class="btn btn-primary" value="Buscar">
-          <input id="submit" type="button" name="btn-operacion" class="btn btn-primary" value="Eliminar">
-          <input id="submit" type="button" name="btn-operacion" (click)="limpiar()" class="btn btn-primary" value="Limpiar">
+          <input type="button" name="btn-operacion" (click)="insertarEmpleado()" class="btn btn-primary" value="Guardar">
+          <input type="button" name="btn-operacion" class="btn btn-primary" value="Modificar">
+          <input type="button" name="btn-operacion" (click)="buscarEmp()" class="btn btn-primary" value="Buscar">
+          <input type="button" name="btn-operacion" (click)="eliminarEmp()" class="btn btn-primary" value="Eliminar">
+          <input type="button" name="btn-operacion" (click)="limpiar()" class="btn btn-primary" value="Limpiar">
               </div>
             </div>
           </div>
-          <!--
-                    <input id="submit" type="button" name="btn-operacion" (click)="insertarCli()" value="Guardar">
-                    <input id="submit" type="button" name="btn-operacion" (click)="modificarCli()" value="Modificar">
-                    <input id="submit" type="button" name="btn-operacion" (click)="consultarCli()" value="Buscar">
-                    <input id="submit" type="button" name="btn-operacion" (click)="eliminarCli()" value="Eliminar">
-                    <input id="submit" type="button" name="btn-operacion" (click)="todoCli()" value="Mostrar todo">
-                    <input id="submit" type="submit" name="btn-operacion" (click)="limpiar()" value="Limpiar" >
-                    -->
         </div>
         </div>
         <br><br>
